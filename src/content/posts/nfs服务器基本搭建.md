@@ -4,7 +4,7 @@ published: 2026-05-16
 description: nfs服务器
 tags:
   - nfs服务器
-category: nfs服务器
+category: 教程
 ---
 # nfs服务器基本搭建和基本使用
 服务器端
