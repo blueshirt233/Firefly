@@ -12,7 +12,7 @@ export const profileConfig: ProfileConfig = {
 	name: "好想喝点奶绿",
 
 	// 个人签名
-	bio: "海浪会来，生活总会继续",
+	bio: "个人记录博客",
 
 	// 链接配置
 	// 已经预装的图标集：fa7-brands，fa7-regular，fa7-solid，material-symbols，simple-icons
