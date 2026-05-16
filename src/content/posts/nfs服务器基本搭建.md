@@ -6,7 +6,6 @@ description: nfs服务器
 tags:
   - nfs服务器
 draft:
-image:
 category: nfs服务器
 ---
 # nfs服务器基本搭建和基本使用

@@ -6,7 +6,6 @@ description: nginx超简易使用（端口转发）
 tags:
   - nginx
 draft: false
-image:
 category: 教程
 ---
 # nginx
