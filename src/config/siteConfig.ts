@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "小破站",
 
 	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	site_url: "https://2644536256.date",
 
 	// 站点描述
 	description:
