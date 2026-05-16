@@ -1,11 +1,9 @@
 ---
 title: nginx超简易使用（端口转发）
 published: 2026-05-16
-pinned:
 description: nginx超简易使用（端口转发）
 tags:
   - nginx
-draft: false
 category: 教程
 ---
 # nginx

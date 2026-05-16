@@ -1,11 +1,9 @@
 ---
 title: nfs服务器基本搭建
 published: 2026-05-16
-pinned:
 description: nfs服务器
 tags:
   - nfs服务器
-draft:
 category: nfs服务器
 ---
 # nfs服务器基本搭建和基本使用
