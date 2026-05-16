@@ -41,17 +41,22 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 桌面背景图片（支持单张或多张随机）
 		// desktop: "assets/images/DesktopWallpaper/d1.avif",
 		desktop: [
-			"assets/images/DesktopWallpaper/d1.avif",
+			"https://tu.2644536256.date/file/奶绿/1778925769980_4e3b9be34839507cad1a902d46d504464264059.png",
+			"https://tu.2644536256.date/file/奶绿/1778925760093_d007df30fb9728f5bda646b9d927018d109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778925757380_4c7571e4ff46b9435e0685a538508aa9109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778922218697_1778390028704.png",
+			"https://tu.2644536256.date/file/奶绿/1778925753766_3ff9a39038a45127a85e0b4c84ea84f6109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778922213548_1753532095495.png",
 		],
 		// 移动背景图片（支持单张或多张随机）
 		// mobile: "assets/images/MobileWallpaper/m1.avif",
 		mobile: [
-			"assets/images/MobileWallpaper/m1.avif",
-			"assets/images/MobileWallpaper/m2.avif",
-			"assets/images/MobileWallpaper/m3.avif",
-			"assets/images/MobileWallpaper/m4.avif",
-			"assets/images/MobileWallpaper/m5.avif",
-			"assets/images/MobileWallpaper/m6.avif",
+			"https://tu.2644536256.date/file/奶绿/1778925769980_4e3b9be34839507cad1a902d46d504464264059.png",
+			"https://tu.2644536256.date/file/奶绿/1778925760093_d007df30fb9728f5bda646b9d927018d109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778925757380_4c7571e4ff46b9435e0685a538508aa9109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778922218697_1778390028704.png",
+			"https://tu.2644536256.date/file/奶绿/1778925753766_3ff9a39038a45127a85e0b4c84ea84f6109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778922213548_1753532095495.png",
 		],
 	},
 	// 横幅壁纸和全屏壁纸共享配置
