@@ -1,14 +1,14 @@
 ---
-title: 模板
+title: zabbix简易搭建
 published: 2026-05-16
 pinned: false
-description: 模板文件
+description: zabbix简易搭建
 tags:
-  - 模板
+  - zabbix
 draft: false
 category: 教程
 ---
-![428a96a8a917429b86cf0bed477e0220.jpeg](https://tu.2644536256.date/file/文章图片/1778940232605_428a96a8a917429b86cf0bed477e0220.jpeg)
+![428a96a8a917429b86cf0bed477e0220.jpeg](https://tu.2644536256.date/file/blog/wengzhang/1778940232605_428a96a8a917429b86cf0bed477e0220.jpeg)
 
 
 

@@ -1,8 +1,8 @@
 ---
-title: linux部分脚本
+title: linux部分shell脚本
 published: 2026-05-16
 pinned: false
-description: linux部分脚本
+description: linux部分shell脚本
 tags:
   - linux
 draft: false
@@ -163,7 +163,7 @@ main
 ```
 
 备份脚本参考
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/4087c115fbb94cbdb015d8a09bc6a8f6.png#pic_center)
+![4087c115fbb94cbdb015d8a09bc6a8f6.png](https://tu.2644536256.date/file/blog/wengzhang/1779110435217_4087c115fbb94cbdb015d8a09bc6a8f6.png)
 备份脚本参考2
 ```bash
 "beifen.sh" 14L, 360B                                                                                                                                                                                                            7,27         全部
@@ -182,9 +182,9 @@ done
 
 ```
 应用检查脚本
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/0e70878a83c849409e4e5aba8629c804.png#pic_center)
+![0e70878a83c849409e4e5aba8629c804.png](https://tu.2644536256.date/file/blog/wengzhang/1779110470513_0e70878a83c849409e4e5aba8629c804.png)
 恶意ip监控并邮件通知
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/35529ebab1ba4c54ab01e2b935da0056.png#pic_center)
+![35529ebab1ba4c54ab01e2b935da0056.png](https://tu.2644536256.date/file/blog/wengzhang/1779110488941_35529ebab1ba4c54ab01e2b935da0056.png)
 批量创建用户
 ```bash
 #!/bin/bash
