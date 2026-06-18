@@ -107,7 +107,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		icon: "material-symbols:link",
 		// 子菜单
 		children: [
-			{
+		/*	{
 				name: "GitHub",
 				url: "https://github.com/Seasir-Hyde",
 				external: true,
@@ -131,12 +131,18 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				external: true,
 				icon: "material-symbols:page-footer-outline",
 			},
-			// {
-			// 	name: "QQ交流群",
-			// 	url: "https://qq.com",
-			// 	external: true,
-			// 	icon: "fa7-brands:qq",
-			// },
+			{
+			 	name: "QQ交流群",
+			 	url: "https://qq.com",
+			 	external: true,
+			 	icon: "fa7-brands:qq",
+			 },*/
+			 {
+				name: "我的图床",
+				url: "https://tu.2644536256.date",
+				external: true,
+				icon: "material-symbols:image",
+			},
 		],
 	});
 

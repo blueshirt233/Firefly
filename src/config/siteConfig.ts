@@ -97,13 +97,13 @@ export const siteConfig: SiteConfig = {
 		// 留言板页面开关，需要配置评论系统
 		guestbook: true,
 		// 番组计划页面开关，含追番、游戏、书籍和音乐
-		bangumi: true,
+		bangumi: false,
 		// 相册页面开关
 		gallery: true,
 		// 设备页面开关
 		devices: false,
 		// 日记页面开关
-		diary: true,
+		diary: false,
 		// 项目页面开关
 		projects: false,
 		// 时间线页面开关
@@ -233,7 +233,7 @@ export const siteConfig: SiteConfig = {
 
   // 启用开发者工具提示信息
   devtoolsWarning: {
-    enable: true, // 是否启用
+    enable: false, // 是否启用
     message:
       "请按本站规定合法使用开发者工具", // 提示信息内容，留空为默认
     time: 5, // 提示信息显示时间，单位秒
