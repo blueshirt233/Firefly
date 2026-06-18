@@ -6,10 +6,10 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Hyde Blog",
+	title: "好想喝点奶绿",
 
 	// 站点副标题
-	subtitle: "人心中的成见是一座大山",
+	subtitle: "Blog",
 
 	// 站点 URL
 	site_url: "https://seasir.top",
@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
 	// 主题色
 	themeColor: {
 		// 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		hue: 270,
+		hue: 160,
 		// 是否对访问者隐藏主题色选择器
 		fixed: false,
 		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
@@ -48,7 +48,7 @@ export const siteConfig: SiteConfig = {
 	favicon: [
 		{
 			// 图标文件路径
-			src: "/favicon/favicon.ico",
+			src: "https://tu.2644536256.date/file/奶绿/1778986178008_logo.png",
 			// 可选，指定主题 'light' | 'dark'
 			// theme: "light",
 			// 可选，图标大小
@@ -66,11 +66,11 @@ export const siteConfig: SiteConfig = {
 		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
 		logo: {
 			type: "image",
-			value: "assets/images/logo.webp",
+			value: "https://tu.2644536256.date/file/奶绿/1778986178008_logo.png",
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "Hyde",
+		title: "好想喝点奶绿",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: true,
 		// 导航菜单对齐方式，left：左对齐，center：居中
@@ -82,7 +82,7 @@ export const siteConfig: SiteConfig = {
 	},
 
 	// 站点开始日期，用于统计运行天数
-	siteStartDate: "2026-04-27",
+	siteStartDate: "2026-06-18",
 
 	// 站点时区（IANA 时区字符串），用于格式化bangumi、rss里的构建日期时间等等..
 	// 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
@@ -93,7 +93,7 @@ export const siteConfig: SiteConfig = {
 		// 友链页面开关
 		friends: true,
 		// 打赏页面开关
-		sponsor: true,
+		sponsor: false,
 		// 留言板页面开关，需要配置评论系统
 		guestbook: true,
 		// 番组计划页面开关，含追番、游戏、书籍和音乐
@@ -101,21 +101,21 @@ export const siteConfig: SiteConfig = {
 		// 相册页面开关
 		gallery: true,
 		// 设备页面开关
-		devices: true,
+		devices: false,
 		// 日记页面开关
 		diary: true,
 		// 项目页面开关
-		projects: true,
+		projects: false,
 		// 时间线页面开关
 		timeline: true,
 		// 技能页面开关
-		skills: true,
+		skills: false,
 	},
 	// 日记页面配置
 	diary: {
 		// 默认头像
 		defaultAvatar:
-			"https://i.postimg.cc/7YLVJqnp/wei-xin-tu-pian-2026-05-07-020150-883.jpg",
+			"https://tu.2644536256.date/file/奶绿/1778986178008_logo.png",
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
@@ -190,7 +190,7 @@ export const siteConfig: SiteConfig = {
 	// 分页配置
 	pagination: {
 		// 每页显示的文章数量
-		postsPerPage: 12,
+		postsPerPage: 16,
 	},
 
 	// 图像优化及响应式配置

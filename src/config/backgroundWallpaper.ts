@@ -41,23 +41,18 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 桌面背景图片（支持单张或多张随机）
 		// desktop: "assets/images/DesktopWallpaper/d1.avif",
 		desktop: [
-			"https://t.alcy.cc/pc",
-			// "assets/images/DesktopWallpaper/d1.avif",
-			// "assets/images/DesktopWallpaper/d2.avif",
-			// "assets/images/DesktopWallpaper/d3.avif",
-			// "assets/images/DesktopWallpaper/d4.avif",
-			// "assets/images/DesktopWallpaper/d5.avif",
-			// "assets/images/DesktopWallpaper/d6.avif",
+			"https://tu.2644536256.date/file/奶绿/1778925769980_4e3b9be34839507cad1a902d46d504464264059.png",
+			"https://tu.2644536256.date/file/奶绿/1778925760093_d007df30fb9728f5bda646b9d927018d109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778925764577_c68d1c0d033a6b48d1e81b35c44b0e2d109143705.png",
+			"https://tu.2644536256.date/file/奶绿/1778925757380_4c7571e4ff46b9435e0685a538508aa9109143705.png",
 		],
 		// 移动背景图片（支持单张或多张随机）
 		// mobile: "assets/images/MobileWallpaper/m1.avif",
 		mobile: [
-			"assets/images/MobileWallpaper/m1.avif",
-			"assets/images/MobileWallpaper/m2.avif",
-			"assets/images/MobileWallpaper/m3.avif",
-			"assets/images/MobileWallpaper/m4.avif",
-			"assets/images/MobileWallpaper/m5.avif",
-			"assets/images/MobileWallpaper/m6.avif",
+			"https://tu.2644536256.date/file/奶绿/1778922200942_Image_1778725922702.png",
+			"https://tu.2644536256.date/file/奶绿/1778922209730_35cd75f8d095a10ea2ad595617e120ec.jpeg",
+			"https://tu.2644536256.date/file/奶绿/1778922214110_a90e6a5787157fb735dd9b3e125c53e9.jpeg",
+			"https://tu.2644536256.date/file/奶绿/1779111252768_727A046735315991BFA83E89D2E88D88.jpg",
 		],
 	},
 	// 横幅壁纸和全屏壁纸共享配置
@@ -71,11 +66,11 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 是否允许用户通过控制面板切换横幅标题显示
 			switchable: true,
 			// 主页横幅主标题
-			title: "Hyde Blog 🎉",
+			title: "好想喝点奶绿のBlog",
 			// 主页横幅主标题字体大小
 			titleSize: "3.8rem",
 			// 主页横幅副标题
-			subtitle: ["欲买桂花同载酒，终不似，少年游！", "花有重开日，人无再少年"],
+			subtitle: ["海浪会来，生活总会继续",],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
 			typewriter: {
