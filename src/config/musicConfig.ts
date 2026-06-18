@@ -11,7 +11,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	showInNavbar: true,
 
 	// 是否显示迷你播放器
-	showMiniPlayer: true,
+	showMiniPlayer: false,
 
 	// 使用方式："meting" 使用 Meting API，"local" 使用本地音乐列表
 	mode: "meting",
@@ -34,19 +34,18 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	meting: {
 		// Meting API 地址
 		// 默认使用官方 API，也可以使用自定义 API
-		api: "https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r",
+		api: "https://meting.mikus.ink/api?server=:tencent&type=:playlist&id=:8941221193",
 		// 音乐平台：netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
-		server: "netease",
+		server: "tencent",
 		// 类型：song=单曲, playlist=歌单, album=专辑, search=搜索, artist=艺术家
-		type: "song",
+		type: "playlist",
 		// 歌单/专辑/单曲 ID 或搜索关键词
-		id: "2611226295",
+		id: "8941221193",
 		// 认证 token（可选）
 		auth: "",
 		// 备用 API 配置（当主 API 失败时使用）
 		fallbackApis: [
-			"https://api.injahow.cn/meting/?server=:server&type=:type&id=:id",
-			"https://api.moeyao.cn/meting/?server=:server&type=:type&id=:id",
+
 		],
 	},
 
@@ -58,11 +57,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
-				name: "迷途羔羊",
-				artist: "张震岳/大渊(顽童MJ116)",
-				url: "/assets/music/迷途羔羊.mp3",
-				cover: "http://p1.music.126.net/b1eSBbx2Yia0k89ocfOnjQ==/18677404023325159.jpg?param=130y130",
-				lrc: "/assets/music/lrc/迷途羔羊.lrc",
+				
 			},
 		],
 	},
