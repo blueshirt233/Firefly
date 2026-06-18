@@ -1,8 +1,8 @@
-import type { BackgroundWallpaperConfig } from "@/types/config";
+import type { BackgroundWallpaperConfig } from "@/types/backgroundWallpaper";
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	// 壁纸模式："banner" 横幅壁纸，"fullscreen" 全屏壁纸，"overlay" 全屏透明，"none" 纯色背景无壁纸
-	mode: "banner",
+	mode: "fullscreen",
 	// 是否允许用户通过导航栏切换壁纸模式
 	// 且同时维护多种壁纸模式过于复杂（已经屎山代码），在切换时有时候可能会出现一些奇怪的过渡效果或者bug
 	// 推荐只选择自己喜欢的模式并关闭切换功能
@@ -41,22 +41,23 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 桌面背景图片（支持单张或多张随机）
 		// desktop: "assets/images/DesktopWallpaper/d1.avif",
 		desktop: [
-			"https://tu.2644536256.date/file/奶绿/1778925769980_4e3b9be34839507cad1a902d46d504464264059.png",
-			"https://tu.2644536256.date/file/奶绿/1778925760093_d007df30fb9728f5bda646b9d927018d109143705.png",
-			"https://tu.2644536256.date/file/奶绿/1778925757380_4c7571e4ff46b9435e0685a538508aa9109143705.png",
-			"https://tu.2644536256.date/file/奶绿/1778922218697_1778390028704.png",
-			"https://tu.2644536256.date/file/奶绿/1778925753766_3ff9a39038a45127a85e0b4c84ea84f6109143705.png",
-			"https://tu.2644536256.date/file/奶绿/1778922213548_1753532095495.png",
+			"https://t.alcy.cc/pc",
+			// "assets/images/DesktopWallpaper/d1.avif",
+			// "assets/images/DesktopWallpaper/d2.avif",
+			// "assets/images/DesktopWallpaper/d3.avif",
+			// "assets/images/DesktopWallpaper/d4.avif",
+			// "assets/images/DesktopWallpaper/d5.avif",
+			// "assets/images/DesktopWallpaper/d6.avif",
 		],
 		// 移动背景图片（支持单张或多张随机）
 		// mobile: "assets/images/MobileWallpaper/m1.avif",
 		mobile: [
-			"https://tu.2644536256.date/file/奶绿/1778925769980_4e3b9be34839507cad1a902d46d504464264059.png",
-			"https://tu.2644536256.date/file/奶绿/1778925760093_d007df30fb9728f5bda646b9d927018d109143705.png",
-			"https://tu.2644536256.date/file/奶绿/1778925757380_4c7571e4ff46b9435e0685a538508aa9109143705.png",
-			"https://tu.2644536256.date/file/奶绿/1778922218697_1778390028704.png",
-			"https://tu.2644536256.date/file/奶绿/1778925753766_3ff9a39038a45127a85e0b4c84ea84f6109143705.png",
-			"https://tu.2644536256.date/file/奶绿/1778922213548_1753532095495.png",
+			"assets/images/MobileWallpaper/m1.avif",
+			"assets/images/MobileWallpaper/m2.avif",
+			"assets/images/MobileWallpaper/m3.avif",
+			"assets/images/MobileWallpaper/m4.avif",
+			"assets/images/MobileWallpaper/m5.avif",
+			"assets/images/MobileWallpaper/m6.avif",
 		],
 	},
 	// 横幅壁纸和全屏壁纸共享配置
@@ -70,13 +71,11 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 是否允许用户通过控制面板切换横幅标题显示
 			switchable: true,
 			// 主页横幅主标题
-			title: "好想喝点奶绿のblog",
+			title: "Hyde Blog 🎉",
 			// 主页横幅主标题字体大小
 			titleSize: "3.8rem",
 			// 主页横幅副标题
-			subtitle: [
-				"海浪会来，生活总会继续。",
-			],
+			subtitle: ["欲买桂花同载酒，终不似，少年游！", "花有重开日，人无再少年"],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
 			typewriter: {
@@ -94,7 +93,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		},
 		// 导航栏配置
 		navbar: {
-			// 导航栏透明模式："semi" 半透明，"full" 完全透明，"semifull" 动态透明
+			// 横幅导航栏透明模式："semi" 半透明，"full" 完全透明，"semifull" 动态透明
 			transparentMode: "semi",
 			// 是否开启毛玻璃模糊效果，开启可能会影响页面性能，如果不开启则是半透明，请根据自己的喜好开启
 			enableBlur: true,
@@ -138,11 +137,11 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 开启轮播可能会有点奇怪，为了让图片之间的切换自然，图片会在下一张加载完成后，当前图片才会消失，所以会导致过渡有重影，可能会影响观感
 			// 目前还没有找到更好的过渡效果方案，所以如果你觉得轮播切换时的过渡效果不好，可以考虑关闭轮播，保持每次刷新随机显示一张图片
 			// 反正我目前不是很满意这个过渡效果，所以默认关闭了，如果你有更好的过渡效果方案，欢迎提交PR改进这个功能
-			enable: false,
+			enable: true,
 			// 轮播切换间隔（毫秒）
 			interval: 5000,
 			// 是否允许用户通过控制面板切换横幅轮播
-			switchable: false,
+			switchable: true,
 		},
 	},
 	// 全屏透明覆盖模式特有配置
@@ -166,5 +165,17 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	fullscreen: {
 		// 图片位置
 		position: "center",
+		// 全屏壁纸轮播配置，仅在当配置多张图片时生效
+		carousel: {
+			// 是否启全屏图片轮播；关闭时保持每次刷新随机显示一张
+			// 开启轮播可能会有点奇怪，为了让图片之间的切换自然，图片会在下一张加载完成后，当前图片才会消失，所以会导致过渡有重影，可能会影响观感
+			// 目前还没有找到更好的过渡效果方案，所以如果你觉得轮播切换时的过渡效果不好，可以考虑关闭轮播，保持每次刷新随机显示一张图片
+			// 反正我目前不是很满意这个过渡效果，所以默认关闭了，如果你有更好的过渡效果方案，欢迎提交PR改进这个功能
+			enable: true,
+			// 轮播切换间隔（毫秒）
+			interval: 5000,
+			// 是否允许用户通过控制面板切换全屏轮播
+			switchable: true,
+		},
 	},
 };

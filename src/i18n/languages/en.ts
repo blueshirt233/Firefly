@@ -14,9 +14,12 @@ export const en: Translation = {
 	[Key.searchViewMore]: "View more results ({count} more)",
 	[Key.other]: "Other",
 	[Key.all]: "All",
+	[Key.friendsFilterAll]: "All",
 
 	[Key.tags]: "Tags",
 	[Key.categories]: "Categories",
+	[Key.allCategories]: "All Categories",
+	[Key.allTags]: "All Tags",
 	[Key.recentPosts]: "Recent Posts",
 	[Key.postList]: "Post List",
 	[Key.tableOfContents]: "Table of Contents",
@@ -54,6 +57,8 @@ export const en: Translation = {
 	[Key.friends]: "Friends",
 	[Key.friendsDescription]:
 		"Here are my friends, welcome to visit and communicate with each other",
+	[Key.searchFriends]: "Search friends...",
+	[Key.friendsEmpty]: "No friends yet.",
 	[Key.guestbook]: "Guestbook",
 	[Key.guestbookDescription]:
 		"Welcome to leave your mark here, share your thoughts and suggestions",
@@ -67,6 +72,8 @@ export const en: Translation = {
 	[Key.minutesCount]: "minutes",
 	[Key.postCount]: "post",
 	[Key.postsCount]: "posts",
+	[Key.tagsCount]: "tags",
+	[Key.noData]: "No data yet",
 
 	[Key.themeColor]: "Theme Color",
 
@@ -83,6 +90,7 @@ export const en: Translation = {
 	[Key.readTime]: "Read time",
 	[Key.license]: "License",
 	[Key.bangumi]: "Bangumi",
+	[Key.moments]: "Dynamic",
 
 	// Bangumi Filter and Status Text
 	[Key.bangumiTitle]: "My Bangumi",
@@ -122,6 +130,9 @@ export const en: Translation = {
 	[Key.bangumiEmpty]: "No Data",
 	[Key.bangumiEmptyReason]:
 		"Possible reasons: username does not exist, network connection issue, or API limit",
+	[Key.bangumiFetchError]: "Bangumi Data Fetch Failed",
+	[Key.bangumiFetchErrorDesc]:
+		"Failed to fetch data from Bangumi API during build. This page is temporarily unavailable.",
 	[Key.bangumiUsername]: "Username",
 	[Key.bangumiApi]: "API",
 	[Key.bangumiConfigTip]:
@@ -207,6 +218,8 @@ export const en: Translation = {
 	[Key.randomPosts]: "Random Posts",
 	[Key.smartRecommend]: "Smart",
 	[Key.randomRecommend]: "Random",
+	[Key.noRelatedPosts]: "No related posts",
+	[Key.noRandomPosts]: "No random posts",
 
 	// Encrypted
 	[Key.postEncrypted]: "This post is encrypted",
@@ -235,6 +248,7 @@ export const en: Translation = {
 	[Key.postListLayout]: "Post List Layout",
 	[Key.postListLayoutList]: "List",
 	[Key.postListLayoutGrid]: "Grid",
+	[Key.postCoverImage]: "Post Cover Image",
 
 	// Sponsor Page
 	[Key.sponsor]: "Sponsor",
@@ -270,6 +284,20 @@ export const en: Translation = {
 	[Key.siteStatsDays]: "{days} days",
 	[Key.today]: "Today",
 
+	// Site Info
+	[Key.siteInfo]: "Site Info",
+	[Key.siteInfoBuildTime]: "Build Time",
+	[Key.siteInfoBuildPlatform]: "Build Platform",
+	[Key.siteInfoBlogVersion]: "Blog Version",
+	[Key.siteInfoAstroVersion]: "Astro Version",
+	[Key.siteInfoNodeVersion]: "Node Version",
+	[Key.siteInfoPnpmVersion]: "pnpm Version",
+	[Key.siteInfoSystem]: "System",
+	[Key.siteInfoExpand]: "Show build info",
+	[Key.siteInfoCollapse]: "Hide build info",
+	[Key.siteInfoDomain]: "Domain",
+	[Key.siteInfoLicense]: "License",
+
 	// Calendar Component
 	[Key.calendarSunday]: "Sun",
 	[Key.calendarMonday]: "Mon",
@@ -290,6 +318,9 @@ export const en: Translation = {
 	[Key.calendarOctober]: "Oct",
 	[Key.calendarNovember]: "Nov",
 	[Key.calendarDecember]: "Dec",
+	[Key.calendar]: "Site Calendar",
+	[Key.calendarHeatmapWeek]: "Week {week} of {month}, {count} posts",
+	[Key.advertisement]: "Advertisement",
 
 	[Key.shareArticle]: "Share",
 	[Key.generatingPoster]: "Generating Poster...",
@@ -311,6 +342,103 @@ export const en: Translation = {
 	[Key.galleryAlbums]: "albums",
 	[Key.galleryNoAlbums]: "No albums yet",
 	[Key.galleryBackToAlbums]: "Back to albums",
+	[Key.searchAlbums]: "Search albums...",
+	[Key.albumsFilterAll]: "All",
+
+	// Diary Page
+	[Key.diary]: "Diary",
+	[Key.diarySubtitle]: "Share life, anytime, anywhere",
+	[Key.diaryNoResults]: "No matching moments",
+	[Key.diaryCount]: "entries",
+
+	[Key.diaryTips]: "Only show the latest 30 diary entries",
+	[Key.diaryMinutesAgo]: "minutes ago",
+	[Key.diaryHoursAgo]: "hours ago",
+	[Key.diaryDaysAgo]: "days ago",
+
+	// Devices Page
+	[Key.devices]: "My Devices",
+	[Key.devicesSubtitle]: "Here are the devices I use in my daily life",
+	[Key.devicesViewDetails]: "View Details",
+	[Key.albumsPhotoCount]: "photo",
+	[Key.albumsPhotosCount]: "photos",
+	[Key.albumsNoResults]: "No matching albums",
+
+	// Projects Page
+	[Key.projects]: "Projects",
+	[Key.projectsSubtitle]: "My development project portfolio",
+	[Key.projectsAll]: "All",
+	[Key.projectsWeb]: "Web Applications",
+	[Key.projectsMobile]: "Mobile Applications",
+	[Key.projectsDesktop]: "Desktop Applications",
+	[Key.projectsOther]: "Other",
+	[Key.projectTechStack]: "Tech Stack",
+	[Key.projectLiveDemo]: "Live Demo",
+	[Key.projectSourceCode]: "Source Code",
+	[Key.projectDescription]: "Project Description",
+	[Key.projectStatus]: "Status",
+	[Key.projectStatusCompleted]: "Completed",
+	[Key.projectStatusInProgress]: "In Progress",
+	[Key.projectStatusPlanned]: "Planned",
+	[Key.projectsTotal]: "Total Projects",
+	[Key.projectsCompleted]: "Completed",
+	[Key.projectsInProgress]: "In Progress",
+	[Key.projectsTechStack]: "Tech Stack Statistics",
+	[Key.projectsFeatured]: "Featured Projects",
+	[Key.projectsPlanned]: "Planned",
+	[Key.projectsDemo]: "Live Demo",
+	[Key.projectsSource]: "Source Code",
+	[Key.projectsVisit]: "Visit Project",
+	[Key.projectsGitHub]: "GitHub",
+
+	// Skills Page
+	[Key.skills]: "Skills",
+	[Key.skillsSubtitle]: "My technical skills and expertise",
+	[Key.skillsFrontend]: "Frontend Development",
+	[Key.skillsBackend]: "Backend Development",
+	[Key.skillsDatabase]: "Database",
+	[Key.skillsTools]: "Development Tools",
+	[Key.skillsOther]: "Other Skills",
+	[Key.skillLevel]: "Proficiency",
+	[Key.skillLevelBeginner]: "Beginner",
+	[Key.skillLevelIntermediate]: "Intermediate",
+	[Key.skillLevelAdvanced]: "Advanced",
+	[Key.skillLevelExpert]: "Expert",
+	[Key.skillExperience]: "Experience",
+	[Key.skillYears]: "years",
+	[Key.skillMonths]: "months",
+	[Key.skillsTotal]: "Total Skills",
+	[Key.skillsExpert]: "Expert Level",
+	[Key.skillsAdvanced]: "Advanced",
+	[Key.skillsIntermediate]: "Intermediate",
+	[Key.skillsBeginner]: "Beginner",
+	[Key.skillsAdvancedTitle]: "Professional Skills",
+	[Key.skillsProjects]: "Related Projects",
+	[Key.skillsDistribution]: "Skill Distribution",
+	[Key.skillsByLevel]: "By Level",
+	[Key.skillsByCategory]: "By Category",
+	[Key.noData]: "No data",
+
+	// Timeline Page
+	[Key.timeline]: "Timeline",
+	[Key.timelineSubtitle]: "My growth journey and important milestones",
+	[Key.timelineEducation]: "Education",
+	[Key.timelineWork]: "Work Experience",
+	[Key.timelineProject]: "Project Experience",
+	[Key.timelineAchievement]: "Achievements",
+	[Key.timelinePresent]: "Present",
+	[Key.timelineLocation]: "Location",
+	[Key.timelineDescription]: "Detailed Description",
+	[Key.timelineMonths]: "months",
+	[Key.timelineYears]: "years",
+	[Key.timelineTotal]: "Total",
+	[Key.timelineProjects]: "Projects",
+	[Key.timelineExperience]: "Work Experience",
+	[Key.timelineCurrent]: "Current Status",
+	[Key.timelineHistory]: "History",
+	[Key.timelineAchievements]: "Achievements",
+	[Key.timelineStartDate]: "Start Date",
+	[Key.timelineDuration]: "Duration",
 
 	// Password Protection
 	[Key.passwordProtected]: "Password Protected",

@@ -14,9 +14,12 @@ export const ja: Translation = {
 	[Key.searchViewMore]: "さらに結果を表示 ({count} 件)",
 	[Key.other]: "その他",
 	[Key.all]: "すべて",
+	[Key.friendsFilterAll]: "すべて",
 
 	[Key.tags]: "タグ",
 	[Key.categories]: "カテゴリ",
+	[Key.allCategories]: "すべてのカテゴリ",
+	[Key.allTags]: "すべてのタグ",
 	[Key.recentPosts]: "最近の投稿",
 	[Key.postList]: "投稿リスト",
 	[Key.tableOfContents]: "目次",
@@ -54,6 +57,8 @@ export const ja: Translation = {
 	[Key.friends]: "友達",
 	[Key.friendsDescription]:
 		"ここは私の友達です、お互いに訪問して交流することを歓迎します",
+	[Key.searchFriends]: "友達を検索...",
+	[Key.friendsEmpty]: "まだ友達がいません",
 	[Key.guestbook]: "ゲストブック",
 	[Key.guestbookDescription]:
 		"ここに足跡を残して、あなたの考えや提案を共有してください",
@@ -67,6 +72,8 @@ export const ja: Translation = {
 	[Key.minutesCount]: "分",
 	[Key.postCount]: "投稿",
 	[Key.postsCount]: "投稿",
+	[Key.tagsCount]: "タグ",
+	[Key.noData]: "データなし",
 
 	[Key.themeColor]: "テーマカラー",
 
@@ -83,6 +90,7 @@ export const ja: Translation = {
 	[Key.readTime]: "読了時間",
 	[Key.license]: "ライセンス",
 	[Key.bangumi]: "バングミ",
+	[Key.moments]: "ダイナミック",
 
 	// バングミフィルターと状態文本
 	[Key.bangumiTitle]: "私のバングミ",
@@ -122,6 +130,9 @@ export const ja: Translation = {
 	[Key.bangumiEmpty]: "データなし",
 	[Key.bangumiEmptyReason]:
 		"考えられる理由：ユーザー名が存在しない、ネットワーク接続の問題、またはAPI制限",
+	[Key.bangumiFetchError]: "Bangumi データ取得失敗",
+	[Key.bangumiFetchErrorDesc]:
+		"ビルド時に Bangumi API からのデータ取得に失敗しました。このページは一時的に利用できません。",
 	[Key.bangumiUsername]: "ユーザー名",
 	[Key.bangumiApi]: "API",
 	[Key.bangumiConfigTip]:
@@ -206,6 +217,8 @@ export const ja: Translation = {
 	[Key.randomPosts]: "ランダム記事",
 	[Key.smartRecommend]: "スマート",
 	[Key.randomRecommend]: "ランダム",
+	[Key.noRelatedPosts]: "関連記事がありません",
+	[Key.noRandomPosts]: "ランダム記事がありません",
 
 	// 暗号化
 	[Key.postEncrypted]: "この記事は暗号化されています",
@@ -234,6 +247,7 @@ export const ja: Translation = {
 	[Key.postListLayout]: "投稿リストレイアウト",
 	[Key.postListLayoutList]: "リスト",
 	[Key.postListLayoutGrid]: "グリッド",
+	[Key.postCoverImage]: "記事のカバー画像",
 
 	// スポンサーページ
 	[Key.sponsor]: "スポンサー",
@@ -269,6 +283,20 @@ export const ja: Translation = {
 	[Key.siteStatsDays]: "{days} 日",
 	[Key.today]: "今日",
 
+	// サイト情報
+	[Key.siteInfo]: "サイト情報",
+	[Key.siteInfoBuildTime]: "ビルド日時",
+	[Key.siteInfoBuildPlatform]: "ビルドプラットフォーム",
+	[Key.siteInfoBlogVersion]: "ブログバージョン",
+	[Key.siteInfoAstroVersion]: "Astro バージョン",
+	[Key.siteInfoNodeVersion]: "Node バージョン",
+	[Key.siteInfoPnpmVersion]: "pnpm バージョン",
+	[Key.siteInfoSystem]: "システム情報",
+	[Key.siteInfoExpand]: "ビルド情報を展開",
+	[Key.siteInfoCollapse]: "ビルド情報を折畳む",
+	[Key.siteInfoDomain]: "ドメイン",
+	[Key.siteInfoLicense]: "ライセンス",
+
 	// カレンダーコンポーネント
 	[Key.calendarSunday]: "日",
 	[Key.calendarMonday]: "月",
@@ -289,6 +317,9 @@ export const ja: Translation = {
 	[Key.calendarOctober]: "10月",
 	[Key.calendarNovember]: "11月",
 	[Key.calendarDecember]: "12月",
+	[Key.calendar]: "サイトカレンダー",
+	[Key.calendarHeatmapWeek]: "{month}月第{week}週、{count}記事",
+	[Key.advertisement]: "広告",
 
 	[Key.shareArticle]: "共有",
 	[Key.generatingPoster]: "ポスター生成中...",
@@ -310,6 +341,103 @@ export const ja: Translation = {
 	[Key.galleryAlbums]: "冊のアルバム",
 	[Key.galleryNoAlbums]: "アルバムがありません",
 	[Key.galleryBackToAlbums]: "アルバム一覧に戻る",
+	[Key.searchAlbums]: "アルバムを検索...",
+	[Key.albumsFilterAll]: "すべて",
+
+	// 日記ページ
+	[Key.diary]: "日記",
+	[Key.diarySubtitle]: "いつでも、どこでも生活を共有",
+	[Key.diaryNoResults]: "一致するモーメントはありません",
+	[Key.diaryCount]: "件の日記のエントリー",
+
+	[Key.diaryTips]: "最新の30件の日記のエントリーのみを表示",
+	[Key.diaryMinutesAgo]: "分前",
+	[Key.diaryHoursAgo]: "時間前",
+	[Key.diaryDaysAgo]: "日前",
+
+	// デバイスページ
+	[Key.devices]: "デバイス",
+	[Key.devicesSubtitle]: "日常的に使用しているデバイスを紹介",
+	[Key.devicesViewDetails]: "詳細を表示",
+	[Key.albumsPhotoCount]: "件の写真",
+	[Key.albumsPhotosCount]: "件の写真",
+	[Key.albumsNoResults]: "一致するアルバムはありません",
+
+	// プロジェクトページ
+	[Key.projects]: "プロジェクト",
+	[Key.projectsSubtitle]: "開発プロジェクトのポートフォリオ",
+	[Key.projectsAll]: "すべて",
+	[Key.projectsWeb]: "ウェブアプリ",
+	[Key.projectsMobile]: "モバイルアプリ",
+	[Key.projectsDesktop]: "デスクトップアプリ",
+	[Key.projectsOther]: "その他",
+	[Key.projectTechStack]: "技術スタック",
+	[Key.projectLiveDemo]: "ライブデモ",
+	[Key.projectSourceCode]: "ソースコード",
+	[Key.projectDescription]: "プロジェクトの説明",
+	[Key.projectStatus]: "ステータス",
+	[Key.projectStatusCompleted]: "完了",
+	[Key.projectStatusInProgress]: "進行中",
+	[Key.projectStatusPlanned]: "計画中",
+	[Key.projectsTotal]: "プロジェクトの合計",
+	[Key.projectsCompleted]: "完了",
+	[Key.projectsInProgress]: "進行中",
+	[Key.projectsTechStack]: "技術スタック",
+	[Key.projectsFeatured]: "注目のプロジェクト",
+	[Key.projectsPlanned]: "計画中",
+	[Key.projectsDemo]: "ライブデモ",
+	[Key.projectsSource]: "ソースコード",
+	[Key.projectsVisit]: "プロジェクトを開く",
+	[Key.projectsGitHub]: "GitHub",
+
+	// スキルページ
+	[Key.skills]: "スキル",
+	[Key.skillsSubtitle]: "技術スキルと専門知識",
+	[Key.skillsFrontend]: "フロントエンド開発",
+	[Key.skillsBackend]: "バックエンド開発",
+	[Key.skillsDatabase]: "データベース",
+	[Key.skillsTools]: "開発ツール",
+	[Key.skillsOther]: "その他のスキル",
+	[Key.skillLevel]: "熟練度",
+	[Key.skillLevelBeginner]: "初心者",
+	[Key.skillLevelIntermediate]: "中級者",
+	[Key.skillLevelAdvanced]: "上級者",
+	[Key.skillLevelExpert]: "専門家",
+	[Key.skillExperience]: "経験の合計",
+	[Key.skillYears]: "年",
+	[Key.skillMonths]: "ヶ月",
+	[Key.skillsTotal]: "スキルの合計",
+	[Key.skillsExpert]: "エキスパートレベル",
+	[Key.skillsAdvanced]: "上級者",
+	[Key.skillsIntermediate]: "中級者",
+	[Key.skillsBeginner]: "初心者",
+	[Key.skillsAdvancedTitle]: "プロフェッショナルスキル",
+	[Key.skillsProjects]: "関連プロジェクト",
+	[Key.skillsDistribution]: "スキル分布",
+	[Key.skillsByLevel]: "レベル別",
+	[Key.skillsByCategory]: "カテゴリー別",
+	[Key.noData]: "データなし",
+
+	// タイムラインページ
+	[Key.timeline]: "タイムライン",
+	[Key.timelineSubtitle]: "成長への旅と重要なマイルストーン",
+	[Key.timelineEducation]: "教育",
+	[Key.timelineWork]: "実務経験",
+	[Key.timelineProject]: "プロジェクト経験",
+	[Key.timelineAchievement]: "実績",
+	[Key.timelinePresent]: "現在",
+	[Key.timelineLocation]: "場所",
+	[Key.timelineDescription]: "詳細な説明",
+	[Key.timelineMonths]: "ヶ月",
+	[Key.timelineYears]: "年",
+	[Key.timelineTotal]: "合計",
+	[Key.timelineProjects]: "プロジェクト",
+	[Key.timelineExperience]: "実務経験",
+	[Key.timelineCurrent]: "現在のステータス",
+	[Key.timelineHistory]: "履歴",
+	[Key.timelineAchievements]: "実績",
+	[Key.timelineStartDate]: "開始日",
+	[Key.timelineDuration]: "期間",
 
 	// パスワード保護
 	[Key.passwordProtected]: "パスワード保護",

@@ -367,8 +367,8 @@ import { url } from "@/utils/url-utils";
     }
   }
 
-  // 监听页面卸载事件，清理资源
-  window.addEventListener("beforeunload", cleanupSpineModel);
+  // 监听页面卸载事件，清理资源 - 使用 pagehide 替代已废弃的 unload
+  window.addEventListener("pagehide", cleanupSpineModel);
 
   // 监听 Swup 页面切换事件（如果使用了 Swup）
   if (typeof window.swup !== "undefined" && window.swup.hooks) {

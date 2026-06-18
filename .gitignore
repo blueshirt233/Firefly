@@ -37,3 +37,5 @@ Firefly-docs/
 cache/
 package/
 .obsidian/
+.edgeone/
+scripts/fill-descriptions.ts

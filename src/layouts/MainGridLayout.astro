@@ -12,9 +12,12 @@ import FloatingControls from "@/components/controls/FloatingControls.astro";
 import ScrollDownIndicator from "@/components/controls/ScrollDownIndicator.astro";
 import TypewriterText from "@/components/features/TypewriterText.astro";
 import CategoryBar from "@/components/layout/CategoryBar.astro";
+import WelcomeToast from "@components/widget/WelcomeToast.astro"; //欢迎提示组件
+import DevToolsWarning from "@components/features/DevToolsWarning.astro"; // 开发者工具提示信息组件
+
 import {
 	backgroundWallpaper,
-	live2dModelConfig,
+	live2dWidgetConfig,
 	sidebarLayoutConfig,
 	siteConfig,
 } from "@/config";
@@ -264,6 +267,15 @@ const bannerCarouselInterval = Math.max(
 	backgroundWallpaper.banner?.carousel?.interval ?? 5000,
 	3000,
 );
+// 全屏壁纸轮播配置
+const fullscreenCarouselEnabledDefault =
+	backgroundWallpaper.fullscreen?.carousel?.enable ?? false;
+const fullscreenCarouselSwitchable =
+	backgroundWallpaper.fullscreen?.carousel?.switchable ?? false;
+const fullscreenCarouselInterval = Math.max(
+	backgroundWallpaper.fullscreen?.carousel?.interval ?? 5000,
+	3000,
+);
 ---
 
 <Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle} postSlug={postSlug}>
@@ -294,6 +306,8 @@ const bannerCarouselInterval = Math.max(
         ]}
     >
         <Navbar></Navbar>
+        <!-- 欢迎提示组件 -->
+        <WelcomeToast></WelcomeToast>
     </div>
 </div>
 
@@ -316,9 +330,12 @@ const bannerCarouselInterval = Math.max(
     <div class="relative h-full w-full" id="banner-images-container"
          data-mobile-count={backgroundImages.mobile.length}
          data-desktop-count={backgroundImages.desktop.length}
-         data-carousel-enabled={bannerCarouselEnabledDefault}
-         data-carousel-switchable={bannerCarouselSwitchable}
-         data-carousel-interval={bannerCarouselInterval}>
+         data-banner-carousel-enabled={bannerCarouselEnabledDefault}
+         data-banner-carousel-switchable={bannerCarouselSwitchable}
+         data-banner-carousel-interval={bannerCarouselInterval}
+         data-fullscreen-carousel-enabled={fullscreenCarouselEnabledDefault}
+         data-fullscreen-carousel-switchable={fullscreenCarouselSwitchable}
+         data-fullscreen-carousel-interval={fullscreenCarouselInterval}>
         <!-- Mobile: 默认渲染第一张，其余放入 template 避免浏览器预加载 -->
         {backgroundImages.mobile.length > 0 && (
             <div class="banner-image-slot-mobile absolute inset-0 block lg:hidden">
@@ -454,25 +471,54 @@ const bannerCarouselInterval = Math.max(
             if (!container) return;
 
             var WALLPAPER_BANNER = 'banner';
+            var WALLPAPER_FULLSCREEN = 'fullscreen';
 
             var mobileCount = parseInt(container.dataset.mobileCount || '0', 10);
             var desktopCount = parseInt(container.dataset.desktopCount || '0', 10);
             if (mobileCount <= 1 && desktopCount <= 1) return;
 
-            var interval = parseInt(container.dataset.carouselInterval || '8000', 10);
-            var switchable = container.dataset.carouselSwitchable === 'true';
-            var defaultEnabled = container.dataset.carouselEnabled === 'true';
             var FADE_MS = 1500;
 
-            function isCarouselEnabled() {
-                if (!switchable) return defaultEnabled;
-                var stored = localStorage.getItem('bannerCarouselEnabled');
-                if (stored === null) return defaultEnabled;
+            function getCarouselConfig(mode) {
+                if (mode === WALLPAPER_FULLSCREEN) {
+                    return {
+                        interval: parseInt(container.dataset.fullscreenCarouselInterval || '8000', 10),
+                        switchable: container.dataset.fullscreenCarouselSwitchable === 'true',
+                        defaultEnabled: container.dataset.fullscreenCarouselEnabled === 'true',
+                        storageKey: 'fullscreenCarouselEnabled'
+                    };
+                } else {
+                    return {
+                        interval: parseInt(container.dataset.bannerCarouselInterval || '8000', 10),
+                        switchable: container.dataset.bannerCarouselSwitchable === 'true',
+                        defaultEnabled: container.dataset.bannerCarouselEnabled === 'true',
+                        storageKey: 'bannerCarouselEnabled'
+                    };
+                }
+            }
+
+            function isCarouselEnabled(mode) {
+                var config = getCarouselConfig(mode);
+                if (!config.switchable) return config.defaultEnabled;
+                var stored = localStorage.getItem(config.storageKey);
+                if (stored === null) return config.defaultEnabled;
                 return stored === 'true';
             }
 
             function isBannerWallpaperMode() {
                 return document.documentElement.getAttribute('data-wallpaper-mode') === WALLPAPER_BANNER;
+            }
+
+            function isFullscreenWallpaperMode() {
+                return document.documentElement.getAttribute('data-wallpaper-mode') === WALLPAPER_FULLSCREEN;
+            }
+
+            function isCarouselMode() {
+                return isBannerWallpaperMode() || isFullscreenWallpaperMode();
+            }
+
+            function getCurrentMode() {
+                return document.documentElement.getAttribute('data-wallpaper-mode');
             }
 
             // 收集所有帧内容
@@ -556,7 +602,50 @@ const bannerCarouselInterval = Math.max(
                 newSlot.innerHTML = frames[nextIndex];
                 oldSlot.parentNode.insertBefore(newSlot, oldSlot.nextSibling);
 
-                // 双 rAF：确保 opacity:0 已绘制，然后同时触发淡入 + Ken Burns
+                // 获取 LQIP 占位和图片元素
+                var placeholder = newSlot.querySelector('.lqip-placeholder');
+                var img = newSlot.querySelector('img');
+
+                // 利用 LQIP 做过渡桥接：立即开始交叉淡入淡出，不再等图片加载
+                // LQIP 渐变作为新层的"底色"遮住旧图，消除两张图同时可见的重影
+                var oldSlotRemoved = false;
+                function removeOldSlot() {
+                    if (!oldSlotRemoved && oldSlot.parentNode) {
+                        oldSlot.parentNode.removeChild(oldSlot);
+                        oldSlotRemoved = true;
+                    }
+                }
+
+                function showFullResImage() {
+                    if (img) {
+                        // 确保图片有过渡效果，从 LQIP 上方平滑淡入
+                        if (!img.style.transition) {
+                            img.style.transition = 'opacity 0.8s ease-out';
+                        }
+                        img.style.opacity = '1';
+                    }
+                    // 延迟隐藏 LQIP，让图片有时间完全显示
+                    if (placeholder) {
+                        setTimeout(function() {
+                            placeholder.classList.add('loaded');
+                        }, 200);
+                    }
+                }
+
+                if (img && img.complete && img.naturalWidth > 0) {
+                    // 图片已缓存：直接显示全分辨率，跳过 LQIP 阶段
+                    showFullResImage();
+                } else if (img) {
+                    // 图片未加载完：先显示 LQIP，加载完成后在 LQIP 上方淡入全分辨率图
+                    img.addEventListener('load', function() {
+                        showFullResImage();
+                    }, { once: true });
+                    img.addEventListener('error', function() {
+                        if (placeholder) placeholder.classList.add('loaded');
+                    }, { once: true });
+                }
+
+                // 立即开始交叉淡入淡出（LQIP 已就绪，可作为过渡层）
                 requestAnimationFrame(function() {
                     requestAnimationFrame(function() {
                         newSlot.style.opacity = '1';
@@ -566,7 +655,7 @@ const bannerCarouselInterval = Math.max(
 
                 // 淡入完成后：移除旧层，清理 transition（避免影响后续动画）
                 setTimeout(function() {
-                    if (oldSlot.parentNode) oldSlot.parentNode.removeChild(oldSlot);
+                    removeOldSlot();
                     newSlot.style.transition = '';
                 }, FADE_MS + 50);
             }
@@ -575,19 +664,23 @@ const bannerCarouselInterval = Math.max(
 
             function startCarousel() {
                 stopCarousel();
-                if (!isBannerWallpaperMode()) return;
-                if (!isCarouselEnabled()) return;
+                var currentMode = getCurrentMode();
+                if (!isCarouselMode()) return;
+                if (!isCarouselEnabled(currentMode)) return;
+
+                var config = getCarouselConfig(currentMode);
 
                 // 首张图立即启动 Ken Burns 缩放
                 applyInitialKB('banner-image-slot-mobile');
                 applyInitialKB('banner-image-slot-desktop');
 
                 timerId = setInterval(function() {
-                    if (!isBannerWallpaperMode()) { stopCarousel(); return; }
-                    if (!isCarouselEnabled()) { stopCarousel(); return; }
+                    var mode = getCurrentMode();
+                    if (!isCarouselMode()) { stopCarousel(); return; }
+                    if (!isCarouselEnabled(mode)) { stopCarousel(); return; }
                     crossfade('banner-image-slot-mobile', mobileCount, 'mobile');
                     crossfade('banner-image-slot-desktop', desktopCount, 'desktop');
-                }, interval);
+                }, config.interval);
             }
 
             function stopCarousel() {
@@ -595,12 +688,21 @@ const bannerCarouselInterval = Math.max(
             }
 
             window.addEventListener('bannerCarouselChange', function(e) {
-                e.detail && e.detail.enabled ? startCarousel() : stopCarousel();
+                if (isBannerWallpaperMode()) {
+                    e.detail && e.detail.enabled ? startCarousel() : stopCarousel();
+                }
+            });
+
+            window.addEventListener('fullscreenCarouselChange', function(e) {
+                if (isFullscreenWallpaperMode()) {
+                    e.detail && e.detail.enabled ? startCarousel() : stopCarousel();
+                }
             });
 
             window.addEventListener('wallpaperModeChange', function(e) {
-                if (e.detail && e.detail.mode === 'banner') {
-                    if (isCarouselEnabled()) startCarousel();
+                var mode = e.detail && e.detail.mode;
+                if (isCarouselMode()) {
+                    if (isCarouselEnabled(mode)) startCarousel();
                 } else {
                     stopCarousel();
                 }
@@ -677,7 +779,7 @@ const bannerCarouselInterval = Math.max(
         <div class="banner-page-title-overlay absolute inset-0 z-20 hidden lg:flex items-center justify-center pointer-events-none">
             <div class="w-4/5 lg:w-3/4 text-center mb-0">
                 <div class="banner-page-title font-bold text-white leading-tight inline-flex items-center justify-center gap-3">
-                    {/* <Icon name="material-symbols:bookmark-rounded" class="banner-page-title-icon" /> */}
+                    {/* <Icon is:inline name="material-symbols:bookmark-rounded" class="banner-page-title-icon" /> */}
                     <span class="banner-page-title-text">{title}</span>
                 </div>
             </div>
@@ -694,19 +796,19 @@ const bannerCarouselInterval = Math.max(
                     </div>
                     <div class="banner-post-meta-list flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-white/90 text-sm md:text-base">
                         <span class="inline-flex items-center gap-1.5">
-                            <Icon name="material-symbols:calendar-month-outline-rounded" class="text-[1.05em]" />
+                            <Icon is:inline name="material-symbols:calendar-month-outline-rounded" class="text-[1.05em]" />
                             <span>{i18n(I18nKey.publishedAt)} {formatDateToYYYYMMDD(bannerPostMeta.published)}</span>
                         </span>
                         {bannerPostMeta.updated &&
                             bannerPostMeta.updated.getTime() !== bannerPostMeta.published.getTime() && (
                                 <span class="inline-flex items-center gap-1.5">
-                                    <Icon name="material-symbols:update-rounded" class="text-[1.05em]" />
+                                    <Icon is:inline name="material-symbols:update-rounded" class="text-[1.05em]" />
                                     <span>{i18n(I18nKey.updatedAt)} {formatDateToYYYYMMDD(bannerPostMeta.updated)}</span>
                                 </span>
                             )}
                         {typeof bannerPostMeta.words === "number" && (
                             <span class="inline-flex items-center gap-1.5">
-                                <Icon name="material-symbols:ink-pen-outline-rounded" class="text-[1.05em]" />
+                                <Icon is:inline name="material-symbols:ink-pen-outline-rounded" class="text-[1.05em]" />
                                 <span>
                                     {bannerPostMeta.words} {i18n(bannerPostMeta.words === 1 ? I18nKey.wordCount : I18nKey.wordsCount)}
                                 </span>
@@ -714,7 +816,7 @@ const bannerCarouselInterval = Math.max(
                         )}
                         {typeof bannerPostMeta.minutes === "number" && (
                             <span class="inline-flex items-center gap-1.5">
-                                <Icon name="material-symbols:schedule-outline-rounded" class="text-[1.05em]" />
+                                <Icon is:inline name="material-symbols:schedule-outline-rounded" class="text-[1.05em]" />
                                 <span>
                                     {bannerPostMeta.minutes} {i18n(bannerPostMeta.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount)} · {i18n(I18nKey.readTime)}
                                 </span>
@@ -799,6 +901,9 @@ const bannerCarouselInterval = Math.max(
     <div id="banner-dim-container" class="hidden"></div>
 </>
 )}
+
+<!-- {live2dModelConfig.enable && <Live2DWidget config={live2dModelConfig} />} -->
+{siteConfig.devtoolsWarning?.enable && <DevToolsWarning />}
 
 <!-- Main content -->
 <div class={`absolute w-full z-30 pointer-events-none ${mobileNonHomeBannerClass ? 'mobile-main-no-banner' : ''} ${!(isBannerMode && isBackgroundEnabled) ? 'no-banner-layout' : ''}`} style={isFullscreenMode ? 'top: 0;' : `top: ${finalMainPanelTop}`}>
@@ -895,7 +1000,7 @@ const bannerCarouselInterval = Math.max(
         </div>
 
         <SpineModel></SpineModel>
-        {live2dModelConfig.enable && <Live2DWidget config={live2dModelConfig} />}
+        {live2dWidgetConfig.enable && <Live2DWidget config={live2dWidgetConfig} />}
     </div>
 </div>
 

@@ -14,9 +14,12 @@ export const ru: Translation = {
 	[Key.searchViewMore]: "Показать еще ({count} шт)",
 	[Key.other]: "Прочее",
 	[Key.all]: "Все",
+	[Key.friendsFilterAll]: "Все",
 
 	[Key.tags]: "Теги",
 	[Key.categories]: "Категории",
+	[Key.allCategories]: "Все категории",
+	[Key.allTags]: "Все теги",
 	[Key.recentPosts]: "Последние посты",
 	[Key.postList]: "Список постов",
 	[Key.tableOfContents]: "Содержание",
@@ -54,6 +57,8 @@ export const ru: Translation = {
 	[Key.friends]: "Ссылки",
 	[Key.friendsDescription]:
 		"Вот мои друзья, добро пожаловать посетить и общаться друг с другом",
+	[Key.searchFriends]: "Поиск друзей...",
+	[Key.friendsEmpty]: "Друзей пока нет.",
 	[Key.guestbook]: "Гостевая книга",
 	[Key.guestbookDescription]:
 		"Добро пожаловать, оставьте свой след здесь, поделитесь своими мыслями и предложениями",
@@ -67,6 +72,8 @@ export const ru: Translation = {
 	[Key.minutesCount]: "минуты",
 	[Key.postCount]: "пост",
 	[Key.postsCount]: "постов",
+	[Key.tagsCount]: "тегов",
+	[Key.noData]: "Нет данных",
 
 	[Key.themeColor]: "Цвет темы",
 
@@ -83,6 +90,7 @@ export const ru: Translation = {
 	[Key.readTime]: "Время чтения",
 	[Key.license]: "Лицензия",
 	[Key.bangumi]: "Бангуми",
+	[Key.moments]: "Динамика",
 
 	// Фильтр и статус Бангуми текст
 	[Key.bangumiTitle]: "Мой план группы",
@@ -122,6 +130,9 @@ export const ru: Translation = {
 	[Key.bangumiEmpty]: "Нет данных",
 	[Key.bangumiEmptyReason]:
 		"Возможные причины: имя пользователя не существует, проблема с подключением к сети или ограничение API",
+	[Key.bangumiFetchError]: "Ошибка загрузки данных Bangumi",
+	[Key.bangumiFetchErrorDesc]:
+		"Не удалось загрузить данные из Bangumi API при сборке. Эта страница временно недоступна.",
 	[Key.bangumiUsername]: "Имя пользователя",
 	[Key.bangumiApi]: "API",
 	[Key.bangumiConfigTip]:
@@ -208,6 +219,8 @@ export const ru: Translation = {
 	[Key.randomPosts]: "Случайные статьи",
 	[Key.smartRecommend]: "Умный",
 	[Key.randomRecommend]: "Случайный",
+	[Key.noRelatedPosts]: "Нет похожих статей",
+	[Key.noRandomPosts]: "Нет случайных статей",
 
 	// Зашифровано
 	[Key.postEncrypted]: "Эта статья зашифрована",
@@ -236,6 +249,7 @@ export const ru: Translation = {
 	[Key.postListLayout]: "Макет списка сообщений",
 	[Key.postListLayoutList]: "Список",
 	[Key.postListLayoutGrid]: "Сетка",
+	[Key.postCoverImage]: "Обложка поста",
 
 	// Страница спонсоров
 	[Key.sponsor]: "Спонсор",
@@ -271,6 +285,20 @@ export const ru: Translation = {
 	[Key.siteStatsDays]: "{days} дней",
 	[Key.today]: "Сегодня",
 
+	// Информация о сайте
+	[Key.siteInfo]: "Информация о сайте",
+	[Key.siteInfoBuildTime]: "Время сборки",
+	[Key.siteInfoBuildPlatform]: "Платформа сборки",
+	[Key.siteInfoBlogVersion]: "Версия блога",
+	[Key.siteInfoAstroVersion]: "Astro",
+	[Key.siteInfoNodeVersion]: "Node",
+	[Key.siteInfoPnpmVersion]: "pnpm",
+	[Key.siteInfoSystem]: "Система",
+	[Key.siteInfoExpand]: "Показать информацию о сборке",
+	[Key.siteInfoCollapse]: "Скрыть информацию о сборке",
+	[Key.siteInfoDomain]: "Домен",
+	[Key.siteInfoLicense]: "Лицензия",
+
 	// Компонент календаря
 	[Key.calendarSunday]: "Вс",
 	[Key.calendarMonday]: "Пн",
@@ -291,6 +319,9 @@ export const ru: Translation = {
 	[Key.calendarOctober]: "Окт",
 	[Key.calendarNovember]: "Ноя",
 	[Key.calendarDecember]: "Дек",
+	[Key.calendar]: "Календарь сайта",
+	[Key.calendarHeatmapWeek]: "Неделя {week} {month}, {count} записей",
+	[Key.advertisement]: "Реклама",
 
 	[Key.shareArticle]: "Поделиться",
 	[Key.generatingPoster]: "Создание постера...",
@@ -312,6 +343,104 @@ export const ru: Translation = {
 	[Key.galleryAlbums]: "альбомов",
 	[Key.galleryNoAlbums]: "Пока нет альбомов",
 	[Key.galleryBackToAlbums]: "Вернуться к альбомам",
+	[Key.searchAlbums]: "Поиск альбомов...",
+	[Key.albumsFilterAll]: "Все",
+
+	// Страница дневника
+	[Key.diary]: "Дневник",
+	[Key.diarySubtitle]: "Поделитесь жизнью, где бы вы ни были",
+	[Key.diaryNoResults]: "Нет подходящих записей",
+	[Key.diaryCount]: "записей",
+
+	[Key.diaryTips]: "Показывается только последние 30 записей",
+	[Key.diaryMinutesAgo]: "минут назад",
+	[Key.diaryHoursAgo]: "часов назад",
+	[Key.diaryDaysAgo]: "дней назад",
+
+	// Страница устройств
+	[Key.devices]: "Устройства",
+	[Key.devicesSubtitle]:
+		"Здесь показаны устройства, которые я использую ежедневно",
+	[Key.devicesViewDetails]: "Подробнее",
+	[Key.albumsPhotoCount]: "фото",
+	[Key.albumsPhotosCount]: "фото",
+	[Key.albumsNoResults]: "Нет подходящих альбомов",
+
+	// Страница проектов
+	[Key.projects]: "Проекты",
+	[Key.projectsSubtitle]: "Мой портфель проектов",
+	[Key.projectsAll]: "Все",
+	[Key.projectsWeb]: "Веб-приложения",
+	[Key.projectsMobile]: "Мобильные приложения",
+	[Key.projectsDesktop]: "Десктопные приложения",
+	[Key.projectsOther]: "Другое",
+	[Key.projectTechStack]: "Технологический стек",
+	[Key.projectLiveDemo]: "Онлайн демо",
+	[Key.projectSourceCode]: "Исходный код",
+	[Key.projectDescription]: "Описание проекта",
+	[Key.projectStatus]: "Статус проекта",
+	[Key.projectStatusCompleted]: "Завершено",
+	[Key.projectStatusInProgress]: "В процессе",
+	[Key.projectStatusPlanned]: "Запланировано",
+	[Key.projectsTotal]: "Всего проектов",
+	[Key.projectsCompleted]: "Завершено",
+	[Key.projectsInProgress]: "В процессе",
+	[Key.projectsTechStack]: "Статистика технологий",
+	[Key.projectsFeatured]: "Избранные проекты",
+	[Key.projectsPlanned]: "Запланировано",
+	[Key.projectsDemo]: "Онлайн демо",
+	[Key.projectsSource]: "Исходный код",
+	[Key.projectsVisit]: "Посетить",
+	[Key.projectsGitHub]: "GitHub",
+
+	// Страница навыков
+	[Key.skills]: "Навыки",
+	[Key.skillsSubtitle]: "Мои технические навыки и профессиональные знания",
+	[Key.skillsFrontend]: "Фронтенд разработка",
+	[Key.skillsBackend]: "Бэкенд разработка",
+	[Key.skillsDatabase]: "Базы данных",
+	[Key.skillsTools]: "Инструменты разработки",
+	[Key.skillsOther]: "Другие навыки",
+	[Key.skillLevel]: "Уровень навыка",
+	[Key.skillLevelBeginner]: "Начинающий",
+	[Key.skillLevelIntermediate]: "Средний",
+	[Key.skillLevelAdvanced]: "Продвинутый",
+	[Key.skillLevelExpert]: "Эксперт",
+	[Key.skillExperience]: "Опыт",
+	[Key.skillYears]: "лет",
+	[Key.skillMonths]: "месяцев",
+	[Key.skillsTotal]: "Всего навыков",
+	[Key.skillsExpert]: "Эксперт",
+	[Key.skillsAdvanced]: "Продвинутый",
+	[Key.skillsIntermediate]: "Средний",
+	[Key.skillsBeginner]: "Начинающий",
+	[Key.skillsAdvancedTitle]: "Профессиональные навыки",
+	[Key.skillsProjects]: "Связанные проекты",
+	[Key.skillsDistribution]: "Распределение навыков",
+	[Key.skillsByLevel]: "По уровню",
+	[Key.skillsByCategory]: "По категориям",
+	[Key.noData]: "Нет данных",
+
+	// Страница временной шкалы
+	[Key.timeline]: "Временная шкала",
+	[Key.timelineSubtitle]: "Мой путь роста и важные вехи",
+	[Key.timelineEducation]: "Образование",
+	[Key.timelineWork]: "Опыт работы",
+	[Key.timelineProject]: "Проекты",
+	[Key.timelineAchievement]: "Достижения",
+	[Key.timelinePresent]: "Настоящее время",
+	[Key.timelineLocation]: "Местоположение",
+	[Key.timelineDescription]: "Подробное описание",
+	[Key.timelineMonths]: "месяцев",
+	[Key.timelineYears]: "лет",
+	[Key.timelineTotal]: "Всего",
+	[Key.timelineProjects]: "Количество проектов",
+	[Key.timelineExperience]: "Опыт работы",
+	[Key.timelineCurrent]: "Текущий статус",
+	[Key.timelineHistory]: "История",
+	[Key.timelineAchievements]: "Достижения",
+	[Key.timelineStartDate]: "Дата начала",
+	[Key.timelineDuration]: "Продолжительность",
 
 	// Защита паролем
 	[Key.passwordProtected]: "Защищено паролем",

@@ -13,6 +13,8 @@ enum I18nKey {
 
 	tags = "tags",
 	categories = "categories",
+	allCategories = "allCategories",
+	allTags = "allTags",
 	recentPosts = "recentPosts",
 	postList = "postList",
 	tableOfContents = "tableOfContents",
@@ -39,6 +41,8 @@ enum I18nKey {
 	minutesCount = "minutesCount",
 	postCount = "postCount",
 	postsCount = "postsCount",
+	tagsCount = "tagsCount",
+	// noData = "noData",
 
 	// Music Widget
 	musicNoPlaying = "musicNoPlaying",
@@ -69,6 +73,7 @@ enum I18nKey {
 	more = "more",
 	collapse = "collapse",
 	all = "all",
+	friendsFilterAll = "friendsFilterAll",
 
 	author = "author",
 	publishedAt = "publishedAt",
@@ -77,9 +82,12 @@ enum I18nKey {
 	license = "license",
 	friends = "friends",
 	friendsDescription = "friendsDescription",
+	searchFriends = "searchFriends",
+	friendsEmpty = "friendsEmpty",
 	guestbook = "guestbook",
 	guestbookDescription = "guestbookDescription",
 	bangumi = "bangumi",
+	moments = "moments",
 
 	// 番组计划筛选和状态文本
 	bangumiTitle = "bangumiTitle",
@@ -126,6 +134,10 @@ enum I18nKey {
 	bangumiCurrentPage = "bangumiCurrentPage",
 	bangumiTotalPages = "bangumiTotalPages",
 	bangumiPage = "bangumiPage",
+
+	// 番组错误
+	bangumiFetchError = "bangumiFetchError",
+	bangumiFetchErrorDesc = "bangumiFetchErrorDesc",
 
 	// 番组分类
 	bangumiCategoryBook = "bangumiCategoryBook",
@@ -197,6 +209,8 @@ enum I18nKey {
 	randomPosts = "randomPosts",
 	smartRecommend = "smartRecommend",
 	randomRecommend = "randomRecommend",
+	noRelatedPosts = "noRelatedPosts",
+	noRandomPosts = "noRandomPosts",
 
 	// 加密
 	postEncrypted = "postEncrypted",
@@ -225,8 +239,9 @@ enum I18nKey {
 	postListLayout = "postListLayout",
 	postListLayoutList = "postListLayoutList",
 	postListLayoutGrid = "postListLayoutGrid",
+	postCoverImage = "postCoverImage",
 
-	// 赞助页面
+	// 打赏页面
 	sponsor = "sponsor",
 	sponsorTitle = "sponsorTitle",
 	sponsorDescription = "sponsorDescription",
@@ -257,6 +272,20 @@ enum I18nKey {
 	siteStatsDays = "siteStatsDays",
 	today = "today",
 
+	// 站点信息
+	siteInfo = "siteInfo",
+	siteInfoBuildTime = "siteInfoBuildTime",
+	siteInfoBuildPlatform = "siteInfoBuildPlatform",
+	siteInfoBlogVersion = "siteInfoBlogVersion",
+	siteInfoAstroVersion = "siteInfoAstroVersion",
+	siteInfoNodeVersion = "siteInfoNodeVersion",
+	siteInfoPnpmVersion = "siteInfoPnpmVersion",
+	siteInfoSystem = "siteInfoSystem",
+	siteInfoExpand = "siteInfoExpand",
+	siteInfoCollapse = "siteInfoCollapse",
+	siteInfoDomain = "siteInfoDomain",
+	siteInfoLicense = "siteInfoLicense",
+
 	// 日历组件
 	calendarSunday = "calendarSunday",
 	calendarMonday = "calendarMonday",
@@ -277,6 +306,9 @@ enum I18nKey {
 	calendarOctober = "calendarOctober",
 	calendarNovember = "calendarNovember",
 	calendarDecember = "calendarDecember",
+	calendar = "calendar",
+	calendarHeatmapWeek = "calendarHeatmapWeek",
+	advertisement = "advertisement",
 
 	shareArticle = "shareArticle",
 	generatingPoster = "generatingPoster",
@@ -298,6 +330,103 @@ enum I18nKey {
 	galleryAlbums = "galleryAlbums",
 	galleryNoAlbums = "galleryNoAlbums",
 	galleryBackToAlbums = "galleryBackToAlbums",
+	searchAlbums = "searchAlbums",
+	albumsFilterAll = "albumsFilterAll",
+
+	albumsPhotoCount = "albumsPhotoCount",
+	albumsPhotosCount = "albumsPhotosCount",
+	albumsNoResults = "albumsNoResults",
+
+	// 日记页面
+	diary = "diary",
+	diarySubtitle = "diarySubtitle",
+	diaryCount = "diaryCount",
+	diaryMinutesAgo = "diaryMinutesAgo",
+	diaryHoursAgo = "diaryHoursAgo",
+	diaryDaysAgo = "diaryDaysAgo",
+	diaryNoResults = "diaryNoResults",
+	diaryTips = "diaryTips",
+
+	// 设备页面
+	devices = "devices",
+	devicesSubtitle = "devicesSubtitle",
+	devicesViewDetails = "devicesViewDetails",
+
+	// 项目展示页面
+	projects = "projects",
+	projectsSubtitle = "projectsSubtitle",
+	projectsAll = "projectsAll",
+	projectsWeb = "projectsWeb",
+	projectsMobile = "projectsMobile",
+	projectsDesktop = "projectsDesktop",
+	projectsOther = "projectsOther",
+	projectTechStack = "projectTechStack",
+	projectLiveDemo = "projectLiveDemo",
+	projectSourceCode = "projectSourceCode",
+	projectDescription = "projectDescription",
+	projectStatus = "projectStatus",
+	projectStatusCompleted = "projectStatusCompleted",
+	projectStatusInProgress = "projectStatusInProgress",
+	projectStatusPlanned = "projectStatusPlanned",
+	projectsTotal = "projectsTotal",
+	projectsCompleted = "projectsCompleted",
+	projectsInProgress = "projectsInProgress",
+	projectsTechStack = "projectsTechStack",
+	projectsFeatured = "projectsFeatured",
+	projectsPlanned = "projectsPlanned",
+	projectsDemo = "projectsDemo",
+	projectsSource = "projectsSource",
+	projectsVisit = "projectsVisit",
+	projectsGitHub = "projectsGitHub",
+
+	// 时间线页面
+	timeline = "timeline",
+	timelineSubtitle = "timelineSubtitle",
+	timelineEducation = "timelineEducation",
+	timelineWork = "timelineWork",
+	timelineProject = "timelineProject",
+	timelineAchievement = "timelineAchievement",
+	timelinePresent = "timelinePresent",
+	timelineLocation = "timelineLocation",
+	timelineDescription = "timelineDescription",
+	timelineMonths = "timelineMonths",
+	timelineYears = "timelineYears",
+	timelineTotal = "timelineTotal",
+	timelineProjects = "timelineProjects",
+	timelineExperience = "timelineExperience",
+	timelineCurrent = "timelineCurrent",
+	timelineHistory = "timelineHistory",
+	timelineAchievements = "timelineAchievements",
+	timelineStartDate = "timelineStartDate",
+	timelineDuration = "timelineDuration",
+
+	// 技能页面
+	skills = "skills",
+	skillsSubtitle = "skillsSubtitle",
+	skillsFrontend = "skillsFrontend",
+	skillsBackend = "skillsBackend",
+	skillsDatabase = "skillsDatabase",
+	skillsTools = "skillsTools",
+	skillsOther = "skillsOther",
+	skillLevel = "skillLevel",
+	skillLevelBeginner = "skillLevelBeginner",
+	skillLevelIntermediate = "skillLevelIntermediate",
+	skillLevelAdvanced = "skillLevelAdvanced",
+	skillLevelExpert = "skillLevelExpert",
+	skillExperience = "skillExperience",
+	skillYears = "skillYears",
+	skillMonths = "skillMonths",
+	skillsTotal = "skillsTotal",
+	skillsExpert = "skillsExpert",
+	skillsAdvanced = "skillsAdvanced",
+	skillsIntermediate = "skillsIntermediate",
+	skillsBeginner = "skillsBeginner",
+	skillsAdvancedTitle = "skillsAdvancedTitle",
+	skillsProjects = "skillsProjects",
+	skillsDistribution = "skillsDistribution",
+	skillsByLevel = "skillsByLevel",
+	skillsByCategory = "skillsByCategory",
+	noData = "noData",
 
 	// 密码保护
 	passwordProtected = "passwordProtected",

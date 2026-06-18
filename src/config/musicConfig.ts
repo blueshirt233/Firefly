@@ -1,4 +1,4 @@
-import type { MusicPlayerConfig } from "../types/config";
+import type { MusicPlayerConfig } from "../types/musicConfig";
 
 // 音乐播放器配置
 export const musicPlayerConfig: MusicPlayerConfig = {
@@ -9,6 +9,9 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 
 	// 是否在导航栏显示音乐播放器入口
 	showInNavbar: true,
+
+	// 是否显示迷你播放器
+	showMiniPlayer: true,
 
 	// 使用方式："meting" 使用 Meting API，"local" 使用本地音乐列表
 	mode: "meting",
@@ -22,17 +25,22 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	// 是否显启用歌词
 	showLyrics: true,
 
+	// 是否同步全局播放器（当进入 /music 页面时）
+	// 设置为 true：侧边栏播放器完全同步 /music 页面的播放列表
+	// 设置为 false：侧边栏使用独立的本地/Meting 配置（默认）
+	syncWithGlobalPlayer: true,
+
 	// Meting API 配置
 	meting: {
 		// Meting API 地址
 		// 默认使用官方 API，也可以使用自定义 API
-		api: "https://meting.mikus.ink/api?server=tencent&type=playlist&id=8941221193",
+		api: "https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r",
 		// 音乐平台：netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
 		server: "netease",
 		// 类型：song=单曲, playlist=歌单, album=专辑, search=搜索, artist=艺术家
-		type: "playlist",
+		type: "song",
 		// 歌单/专辑/单曲 ID 或搜索关键词
-		id: "10046455237",
+		id: "2611226295",
 		// 认证 token（可选）
 		auth: "",
 		// 备用 API 配置（当主 API 失败时使用）
@@ -50,11 +58,11 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
-				name: "使一颗心免于哀伤",
-				artist: "知更鸟 / HOYO-MiX / Chevy",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-				cover: "/assets/music/cover/109951169585655912.webp",
-				lrc: "",
+				name: "迷途羔羊",
+				artist: "张震岳/大渊(顽童MJ116)",
+				url: "/assets/music/迷途羔羊.mp3",
+				cover: "http://p1.music.126.net/b1eSBbx2Yia0k89ocfOnjQ==/18677404023325159.jpg?param=130y130",
+				lrc: "/assets/music/lrc/迷途羔羊.lrc",
 			},
 		],
 	},

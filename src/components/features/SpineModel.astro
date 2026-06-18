@@ -418,8 +418,8 @@ import { url } from "@/utils/url-utils";
     }
   }
 
-  // 监听页面卸载事件，清理资源
-  window.addEventListener("beforeunload", cleanupSpineModel);
+  // 监听页面卸载事件，清理资源 - 使用 pagehide 替代已废弃的 unload
+  window.addEventListener("pagehide", cleanupSpineModel);
 
   // 监听 Swup 页面切换事件（如果使用了 Swup）
   if (typeof window.swup !== "undefined" && window.swup.hooks) {
@@ -438,13 +438,23 @@ import { url } from "@/utils/url-utils";
     }, 100);
   });
 
+  function scheduleInit(fn) {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => fn(), { timeout: 3000 });
+    } else {
+      setTimeout(fn, 300);
+    }
+  }
+
   // 监听窗口大小变化
   window.addEventListener("resize", updateResponsiveDisplay);
 
-  // 页面加载完成后初始化（只初始化一次）
+  // 页面加载完成后初始化（只初始化一次）- defer to not block main content rendering
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initSpineModel);
+    document.addEventListener("DOMContentLoaded", () => {
+      scheduleInit(initSpineModel);
+    });
   } else {
-    initSpineModel();
+    scheduleInit(initSpineModel);
   }
 </script>

@@ -11,6 +11,18 @@
 
 .banner-subtitle {
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background-color: #fff6;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 8px;
+    width: auto;
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 /* 横幅背景暗层透明度 - 通过配置文件 common.dimOpacity 控制，内联样式覆盖 */
@@ -39,6 +51,7 @@
 
 .banner-page-title-text {
     line-height: 1.2;
+    transition: opacity 0.25s ease;
 }
 
 .banner-post-meta-list {

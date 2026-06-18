@@ -281,18 +281,22 @@ export function applyWallpaperModeToDocument(
 	mode: WALLPAPER_MODE,
 	animate = true,
 ) {
-	// 检查是否允许切换壁纸模式
-	const isSwitchable = backgroundWallpaper.switchable ?? true;
-	if (!isSwitchable) {
-		// 如果不允许切换，直接返回，不执行任何操作
-		return;
-	}
-
 	// 获取当前的壁纸模式
 	const currentMode =
 		(document.documentElement.getAttribute(
 			"data-wallpaper-mode",
 		) as WALLPAPER_MODE) || backgroundWallpaper.mode;
+
+	// 检查是否允许切换壁纸模式
+	const isSwitchable = backgroundWallpaper.switchable ?? true;
+	if (!isSwitchable) {
+		// 不允许切换时，仍需初始化当前模式的UI状态（添加 wallpaper-initialized 等）
+		if (currentMode === mode) {
+			adjustMainContentPosition(mode, false);
+			ensureWallpaperState(mode);
+		}
+		return;
+	}
 
 	// 如果模式没有变化，直接返回
 	if (currentMode === mode) {
@@ -1277,6 +1281,108 @@ export function applyBannerCarouselEnabledToDocument(enabled: boolean): void {
 	}
 	document.documentElement.setAttribute(
 		"data-banner-carousel-enabled",
+		String(enabled),
+	);
+}
+
+// Fullscreen carousel functions
+export function getDefaultFullscreenCarouselEnabled(): boolean {
+	return backgroundWallpaper.fullscreen?.carousel?.enable ?? false;
+}
+
+export function getStoredFullscreenCarouselEnabled(): boolean {
+	const isSwitchable =
+		backgroundWallpaper.fullscreen?.carousel?.switchable ?? false;
+	if (!isSwitchable) {
+		return getDefaultFullscreenCarouselEnabled();
+	}
+	if (
+		typeof localStorage === "undefined" ||
+		typeof localStorage.getItem !== "function"
+	) {
+		return getDefaultFullscreenCarouselEnabled();
+	}
+	const stored = localStorage.getItem("fullscreenCarouselEnabled");
+	if (stored === null) {
+		return getDefaultFullscreenCarouselEnabled();
+	}
+	return stored === "true";
+}
+
+export function setFullscreenCarouselEnabled(enabled: boolean): void {
+	const safeEnabled = !!enabled;
+	const isSwitchable =
+		backgroundWallpaper.fullscreen?.carousel?.switchable ?? false;
+	if (
+		isSwitchable &&
+		typeof localStorage !== "undefined" &&
+		typeof localStorage.setItem === "function"
+	) {
+		localStorage.setItem("fullscreenCarouselEnabled", String(safeEnabled));
+	}
+	applyFullscreenCarouselEnabledToDocument(safeEnabled);
+	if (typeof window !== "undefined") {
+		window.dispatchEvent(
+			new CustomEvent("fullscreenCarouselChange", {
+				detail: { enabled: safeEnabled },
+			}),
+		);
+	}
+}
+
+export function applyFullscreenCarouselEnabledToDocument(enabled: boolean): void {
+	if (typeof document === "undefined") {
+		return;
+	}
+	document.documentElement.setAttribute(
+		"data-fullscreen-carousel-enabled",
+		String(enabled),
+	);
+}
+
+// Post cover image functions
+export function getDefaultPostCoverImageEnabled(): boolean {
+	return siteConfig.postListLayout.showCover ?? true;
+}
+
+export function getStoredPostCoverImageEnabled(): boolean {
+	if (
+		typeof localStorage === "undefined" ||
+		typeof localStorage.getItem !== "function"
+	) {
+		return getDefaultPostCoverImageEnabled();
+	}
+	const stored = localStorage.getItem("postCoverImageEnabled");
+	if (stored === null) {
+		return getDefaultPostCoverImageEnabled();
+	}
+	return stored === "true";
+}
+
+export function setPostCoverImageEnabled(enabled: boolean): void {
+	if (
+		typeof localStorage === "undefined" ||
+		typeof localStorage.setItem !== "function"
+	) {
+		return;
+	}
+	localStorage.setItem("postCoverImageEnabled", String(enabled));
+	applyPostCoverImageEnabledToDocument(enabled);
+	if (typeof window !== "undefined") {
+		window.dispatchEvent(
+			new CustomEvent("postCoverImageChange", {
+				detail: { enabled },
+			}),
+		);
+	}
+}
+
+export function applyPostCoverImageEnabledToDocument(enabled: boolean): void {
+	if (typeof document === "undefined") {
+		return;
+	}
+	document.documentElement.setAttribute(
+		"data-post-cover-enabled",
 		String(enabled),
 	);
 }

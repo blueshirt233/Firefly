@@ -1,5 +1,4 @@
-import type { SiteConfig } from "@/types/config";
-import { fontConfig } from "./fontConfig";
+import type { SiteConfig } from "@/types/siteConfig";
 
 // 定义站点语言
 // 语言代码，例如：'zh_CN', 'zh_TW', 'en', 'ja', 'ru'。
@@ -7,33 +6,25 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "好想喝点奶绿",
+	title: "Hyde Blog",
 
 	// 站点副标题
-	subtitle: "小破站",
+	subtitle: "人心中的成见是一座大山",
 
 	// 站点 URL
-	site_url: "https://blog.2644536256.date",
+	site_url: "https://seasir.top",
 
 	// 站点描述
 	description:
-		"这是我个人第一次个人博客。",
+		"Hyde 是一个记录折腾博客搭建教程、分享教程、随笔感悟，技术探索与生活记录，都在这里。",
 
 	// 站点关键词
-	keywords: [
-		"好想喝点奶绿",
-		"Fuwari",
-		"Astro",
-		"ACGN",
-		"博客",
-		"技术博客",
-		"静态博客",
-	],
+	keywords: ["Hyde", "个人博客主题", "Astro", "ACGN", "博客", "技术博客", "静态博客","现代化博客","内容创作者","开源主题","番组追踪","技术分享","生活点滴","建站记录","技术折腾","个人博客","日常随笔","生活相册","折腾日记"],
 
 	// 主题色
 	themeColor: {
 		// 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		hue: 165,
+		hue: 270,
 		// 是否对访问者隐藏主题色选择器
 		fixed: false,
 		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
@@ -43,7 +34,7 @@ export const siteConfig: SiteConfig = {
 	// 页面整体宽度（单位：rem）
 	// 数值越大可以让页面内容区域更宽
 	// 在使用单侧栏边栏时，建议调低一些宽度以获得更好的视觉效果。
-	pageWidth: 100,
+	pageWidth: 105,
 
 	// 网站Card样式配置
 	card: {
@@ -71,15 +62,15 @@ export const siteConfig: SiteConfig = {
 		// 支持三种类型：
 		// 1. Astro图标库: { type: "icon", value: "material-symbols:home-pin-outline" }
 		// 2. 本地图片（public目录，不优化）: { type: "image", value: "/assets/images/logo.webp", alt: "Logo" }
-		// 3. 本地图片（src目录，自动优化但会增加构建时间，推荐）: { type: "image", value: "assets/images/logo.webp", alt: "Logo" }
+		// 3. 本地图片（src目录，自动优化但会增加构建时间）: { type: "image", value: "assets/images/logo.webp", alt: "Logo" }
 		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
 		logo: {
 			type: "image",
-			value: "assets/images/logo.png",
-			alt: "logo",
+			value: "assets/images/logo.webp",
+			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "好想喝点奶绿",
+		title: "Hyde",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: true,
 		// 导航菜单对齐方式，left：左对齐，center：居中
@@ -91,130 +82,115 @@ export const siteConfig: SiteConfig = {
 	},
 
 	// 站点开始日期，用于统计运行天数
-	siteStartDate: "2026-05-16",
+	siteStartDate: "2026-04-27",
 
 	// 站点时区（IANA 时区字符串），用于格式化bangumi、rss里的构建日期时间等等..
 	// 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
 	timezone: "Asia/Shanghai",
 
-	// 提醒框（Admonitions）配置，修改后需要重启开发服务器才能生效
-	// 主题：'github' | 'obsidian' | 'vitepress'，每个主题风格和语法不同，可根据喜好选择
-	rehypeCallouts: {
-		theme: "github",
-	},
-
-	// 文章页底部的"上次编辑时间"卡片开关
-	showLastModified: true,
-
-	// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
-	outdatedThreshold: 30,
-
-	// 是否开启分享海报生成功能
-	sharePoster: true,
-
-	// OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
-	generateOgImages: true,
-
-	// bangumi配置
-	bangumi: {
-		// Bangumi用户ID
-		userId: "1143164",
-		// 条目类型排序，数组中的类型将按顺序优先展示
-		// 可选值: "anime" | "book" | "music" | "game" | "real" (暂不支持"real"类型)
-		// 未列出的类型将按默认顺序排在后面
-		categoryOrder: ["anime", "book", "music", "game"],
-	},
-
-	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
-	// bangumi的数据为编译时获取的，所以不是实时数据，请配置bangumi.userId
+	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
 	pages: {
 		// 友链页面开关
-		friends: false,
-		// 赞助页面开关
-		sponsor: false,
+		friends: true,
+		// 打赏页面开关
+		sponsor: true,
 		// 留言板页面开关，需要配置评论系统
-		guestbook: false,
-		// 番组计划页面开关，含追番、游戏、书籍和音乐，dev调试时只获取一页数据，build才会获取全部数据
-		bangumi: false,
+		guestbook: true,
+		// 番组计划页面开关，含追番、游戏、书籍和音乐
+		bangumi: true,
 		// 相册页面开关
 		gallery: true,
+		// 设备页面开关
+		devices: true,
+		// 日记页面开关
+		diary: true,
+		// 项目页面开关
+		projects: true,
+		// 时间线页面开关
+		timeline: true,
+		// 技能页面开关
+		skills: true,
+	},
+	// 日记页面配置
+	diary: {
+		// 默认头像
+		defaultAvatar:
+			"https://i.postimg.cc/7YLVJqnp/wei-xin-tu-pian-2026-05-07-020150-883.jpg",
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
 	categoryBar: true,
 
+	// 归档页是否折叠非最新年份文章，禁用后默认展开全部年份
+	foldArticle: true,
+
 	// 文章列表布局配置
 	postListLayout: {
 		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
-		defaultMode: "list",
+		defaultMode: "grid",
 		// 移动端默认布局模式，不设置则跟随 defaultMode
-		mobileDefaultMode: "list",
+		mobileDefaultMode: "grid",
 		// 是否在文章列表中显示标签
 		showTags: true,
 		// 文章简介显示行数，设为 0 则不截断
 		descriptionLines: 2,
 		// 是否允许用户切换布局
 		allowSwitch: true,
+		// 是否允许用户切换文章封面图显示
+		allowCoverSwitch: true,
+		// 默认是否显示文章封面图
+		showCover: true,
 		// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
 		grid: {
 			// 是否开启瀑布流布局，同时有封面图和无封面图的混合文章推荐开启
-			masonry: true,
+			masonry: false,
 			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数
 			columnWidth: 320,
 		},
 	},
 
+	// 文章内容页配置
+	post: {
+		// 提醒框（Admonitions）配置，修改后需要重启开发服务器才能生效
+		// 主题：'github' | 'obsidian' | 'vitepress' | 'docusaurus'，每个主题风格和语法不同，可根据喜好选择
+		rehypeCallouts: {
+			theme: "vitepress",
+			// 是否启用兼容 Python-Markdown 风格的 admonition 语法（!!!和???语法）
+			// 注意：只有 theme 配置成 obsidian 主题才能基本支持这些语法，其他主题会有样式问题或不兼容的情况
+			enablePythonMarkdownAdmonitions: false,
+		},
+		// 文章页底部的"上次编辑时间"卡片开关
+		showLastModified: true,
+		// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
+		outdatedThreshold: 30,
+		// 是否开启分享海报生成功能
+		sharePoster: true,
+		// OpenGraph图片功能，注意开启后要渲染很长时间，不建议本地调试的时候开启
+		generateOgImages: false,
+	},
+
+	// bangumi配置
+	bangumi: {
+		// Bangumi用户ID
+		userId: "1143164",
+		// 数据模式：static=构建时获取，dynamic=客户端实时获取
+		// static 模式在构建时获取数据并静态渲染，部署后数据不更新
+		// dynamic 模式在浏览器中实时请求 API，始终显示最新数据
+		mode: "dynamic",
+		// Bangumi API 地址
+		apiUrl: "https://api.bangumi.one",
+		// 详情页地址
+		subjectBaseUrl: "https://bangumi.one/subject/",
+		// 条目类型排序，数组中的类型将按顺序优先展示
+		// 可选值: "anime" | "book" | "music" | "game" | "real" (暂不支持"real"类型)
+		// 未列出的类型将按默认顺序排在后面
+		categoryOrder: ["anime", "book", "music", "game"],
+	},
+
 	// 分页配置
 	pagination: {
 		// 每页显示的文章数量
-		postsPerPage: 15,
-	},
-
-	// 统计分析
-	analytics: {
-		// Google Analytics ID
-		googleAnalyticsId: "",
-		// Microsoft Clarity ID
-		microsoftClarityId: "",
-		// Umami 统计配置
-		umamiAnalytics: {
-			// Umami Website ID
-			websiteId: "",
-			// Umami JS地址，支持使用自建
-			scriptUrl: "https://cloud.umami.is/script.js",
-			// 是否追踪出站链接
-			trackOutboundLinks: true,
-			// 是否收集浏览器性能指标
-			collectWebVitals: false,
-			// 会话回放配置
-			relpays: {
-				// 是否启用会话回放
-				enabled: false,
-				// 录制会话采样率，范围 0-1，例如 0.15 表示记录 15% 的会话
-				sampleRate: 0.15,
-				// 隐私遮罩级别："moderate" 会遮罩所有输入框；"strict" 额外遮罩页面全部文本
-				maskLevel: "moderate",
-				// 单次录制最大时长（毫秒）
-				maxDuration: 300000,
-				// 需要排除录制的元素 CSS 选择器，例如 ".sensitive-widget"
-				blockSelector: "",
-			},
-		},
-		// 51la 统计配置
-		la51Analytics: {
-			// 51la 统计 ID
-			Id: "",
-			// 自定义 SDK JS 地址，防止 DNS 污染，留空使用默认地址
-			sdkUrl: "",
-			// 多个统计 ID 的数据分离标识，留空则使用 Id
-			ck: "",
-			// 是否开启事件分析功能
-			autoTrack: false,
-			//  Hash路由模式, 项目使用History API路由, 所以不必开启默认false
-			hashMode: false,
-			// 是否开启网站录屏功能
-			screenRecord: true,
-		},
+		postsPerPage: 12,
 	},
 
 	// 图像优化及响应式配置
@@ -236,10 +212,30 @@ export const siteConfig: SiteConfig = {
 		noReferrerDomains: [],
 	},
 
-	// 字体配置
-	// 在src/config/fontConfig.ts中配置具体字体
-	font: fontConfig,
-
 	// 站点语言，在本配置文件顶部SITE_LANG定义
 	lang: SITE_LANG,
+
+	// 音乐配置
+  music: {
+    // 歌单配置
+    playlists: [
+      { id: "17924204831", name: "纯音乐", server: "netease" },
+      { id: "17933567326", name: "我的喜欢", server: "netease" },
+      { id: "zhoujielun", name: "周杰伦", server: "netease", type: "custom" },
+      { id: "17964946766", name: "陶喆", server: "netease" },
+      { id: "17957187425", name: "方大同", server: "netease" },
+      { id: "17956985703", name: "G.E.M.邓紫棋", server: "netease" },
+      { id: "17957136689", name: "林俊杰", server: "netease" },
+      { id: "17957661244", name: "孙燕姿", server: "netease" },
+      { id: "17966019560", name: "告五人", server: "netease" },
+    ],
+  },
+
+  // 启用开发者工具提示信息
+  devtoolsWarning: {
+    enable: true, // 是否启用
+    message:
+      "请按本站规定合法使用开发者工具", // 提示信息内容，留空为默认
+    time: 5, // 提示信息显示时间，单位秒
+  },
 };
