@@ -5,7 +5,7 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "📢 欢迎来访者",
 
 	// 公告内容
-	content: "👋🏻 Hi，我是好想喝点奶绿，欢迎您！",
+	content: "👋🏻 Hi，我是好想喝点奶绿，欢迎您！本站点将继续施工！",
 
 	// 是否允许用户关闭公告
 	closable: true,
