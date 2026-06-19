@@ -1113,14 +1113,14 @@ fi
 
 #### 总结
 
-| 命令选项 | 说明 | 示例 |
-| --- | --- | --- |
-| `read` | 读取用户输入并赋值给变量 | `read name` |
-| `-p` | 显示提示信息 | `read -p "Enter name: " name` |
-| `-t` | 设置超时时间（秒） | `read -t 5 -p "Enter name: " name` |
-| `-s` | 隐藏输入内容 | `read -sp "Enter password: " pwd` |
-| `-n` | 只读取一个字符 | `read -n 1 -p "Continue? " choice` |
-| `IFS` | 设置输入分隔符 | `IFS=',' read name age` |
+| 命令选项   | 说明           | 示例                                 |
+| ------ | ------------ | ---------------------------------- |
+| `read` | 读取用户输入并赋值给变量 | `read name`                        |
+| `-p`   | 显示提示信息       | `read -p "Enter name: " name`      |
+| `-t`   | 设置超时时间（秒）    | `read -t 5 -p "Enter name: " name` |
+| `-s`   | 隐藏输入内容       | `read -sp "Enter password: " pwd`  |
+| `-n`   | 只读取一个字符      | `read -n 1 -p "Continue? " choice` |
+| `IFS`  | 设置输入分隔符      | `IFS=',' read name age`            |
 
 通过 `read` 命令，你可以轻松地获取用户的输入，并根据输入的内容做出相应的处理，提升脚本的交互性和灵活性。
 
