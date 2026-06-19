@@ -57,8 +57,8 @@ importers:
         specifier: ^1.2.4
         version: 1.2.4
       '@iconify-json/material-symbols':
-        specifier: ^1.2.77
-        version: 1.2.77
+        specifier: ^1.2.79
+        version: 1.2.79
       '@iconify-json/mingcute':
         specifier: ^1.2.7
         version: 1.2.7
@@ -1563,8 +1563,8 @@ packages:
   '@iconify-json/iconoir@1.2.11':
     resolution: {integrity: sha512-clBrCsZPkmdksYOkufVp7aoAU1j1hFQPrLUooWWmoYIMvKskUHQ+IDnwV7agTR+tGYHbud7OP2SRfYEpnqFDNw==}
 
-  '@iconify-json/material-symbols@1.2.77':
-    resolution: {integrity: sha512-pdsVkeVjNROfOjiora/5R3Ku8SjNut/8OugN9UoepPxjcDIYLUBp40t7fsI3RlPqMHbRP+qkuS7v0qLPdqZp9A==}
+  '@iconify-json/material-symbols@1.2.79':
+    resolution: {integrity: sha512-WRLBReaTNJAeHxsFlD7pJ/K6il2vOZ4va3XTAUdTDkn4rWzRYu6dnI1bAW/4pANlTCt5eemtP65gBBNxt8Xd7Q==}
 
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
@@ -7626,7 +7626,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/material-symbols@1.2.77':
+  '@iconify-json/material-symbols@1.2.79':
     dependencies:
       '@iconify/types': 2.0.0
 
