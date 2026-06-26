@@ -1,6 +1,6 @@
 ---
 title: python的自动化运维
-published: 2026-05-24
+published: 2026-05-20
 pinned: false
 description: python的自动化运维
 tags:

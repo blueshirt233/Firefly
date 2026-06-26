@@ -1,6 +1,6 @@
 ---
 title: python的自动化运维四面向对象（类和实例，继承和多态）
-published: 2026-06-14
+published: 2026-06-16
 pinned: false
 description: python的自动化运维四面向对象（类和实例，继承和多态）
 tags:

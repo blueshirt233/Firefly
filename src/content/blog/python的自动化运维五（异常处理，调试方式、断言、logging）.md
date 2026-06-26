@@ -1,6 +1,6 @@
 ---
 title: python的自动化运维五（异常处理）
-published: 2026-06-16
+published: 2026-06-18
 pinned: false
 description: python的自动化运维五（异常处理）
 tags:
