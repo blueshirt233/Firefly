@@ -1,0 +1,33 @@
+
+> firefly@6.13.4 astro C:\Users\admin\Desktop\Firefly
+> astro "dev" "--host"
+
+[2m21:06:59[22m [34m[vite][39m connected.
+[2m21:07:05[22m [34m[types][39m Generated [2m8ms[22m
+[2m21:07:05[22m [34m[vite][39m connected.
+[2m21:07:07[22m [34m[content][39m Syncing content
+[2m21:07:07[22m [34m[content][39m Synced content
+[42m[1m astro [22m[49m [32mv7.0.2[39m [2mready in[22m 32953 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [36mhttp://192.168.17.158:4321/[39m
+[2m21:07:07[22m [32mwatching for file changes...[39m
+[31m[1m21:09:02[22m [ERROR][39m TypeError: Cannot read properties of undefined (reading 'data')
+    at eval (C:\Users\admin\Desktop\Firefly\src\pages\shuoshuo\index.astro:26:1)
+    at index (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+    at renderToAsyncIterable (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\runtime\server\render\astro\render.js:235:32)
+    at renderPage (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\runtime\server\render\page.js:37:51)
+    at PagesHandler.handle (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\core\pages\handler.js:33:38)
+    at async callMiddleware (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\core\middleware\callMiddleware.js:11:10)
+    at async AstroMiddleware.handle (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\core\middleware\astro-middleware.js:39:18)
+    at async AstroHandler.render (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\core\routing\handler.js:116:20)
+    at async AstroServerApp.render (C:\Users\admin\Desktop\Firefly\node_modules\.pnpm\astro@7.0.2_@astrojs+markdown-remark@7.2.0_@emnapi+core@1.9.1_@emnapi+runtime@1.9.1_@types+no_k3ngcyg6xrqwehqa4vc6d6xfxq\node_modules\astro\dist\core\app\base.js:241:18)
+[31m[1m21:09:02[22m [ERROR][39m Cannot read properties of undefined (reading 'data')
+  [1mStack trace:[22m
+[2m    at eval (C:\Users\admin\Desktop\Firefly\src\pages\shuoshuo\index.astro:26:1)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[2m21:14:12[22m [34m[200][39m /shuoshuo/ [2m606ms[22m
+[2m21:18:22[22m [34m[200][39m /shuoshuo/ [2m623ms[22m
+[2m21:18:23[22m [34m[200][39m /shuoshuo/hello/ [2m478ms[22m
+[2m21:18:23[22m [34m[200][39m /shuoshuo/bilibili-demo/ [2m73ms[22m
+ ELIFECYCLE  Command failed with exit code 4294967295.

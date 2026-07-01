@@ -36,7 +36,7 @@ function joinUrl(...parts: string[]): string {
 export function getPostUrlBySlug(slug: string): string {
 	// 移除文件扩展名（如 .md, .mdx 等）
 	const slugWithoutExt = removeFileExtension(slug);
-	return url(`/blog/${slugWithoutExt}/`);
+	return url(`/posts/${slugWithoutExt}/`);
 }
 
 export function getTagUrl(tag: string): string {
@@ -50,12 +50,8 @@ export function getCategoryUrl(category: string | null): string {
 		category.trim() === "" ||
 		category.trim().toLowerCase() === i18n(I18nKey.uncategorized).toLowerCase()
 	)
-		return url("/categories/uncategorized/");
-	return url(`/categories/${encodeURIComponent(category.trim())}/`);
-}
-
-export function getCategoryPageUrl(): string {
-	return url("/categories/");
+		return url("/archive/?uncategorized=true");
+	return url(`/archive/?category=${encodeURIComponent(category.trim())}`);
 }
 
 export function getDir(path: string): string {
