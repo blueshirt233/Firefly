@@ -292,11 +292,6 @@ const total = rendered.length
       })
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", function () { setTimeout(run, 1) })
-    } else {
-      setTimeout(run, 1)
-    }
-    document.addEventListener("swup:content:replace", function () { setTimeout(run, 100) })
+    document.addEventListener("astro:page-load", function () { setTimeout(run, 1) })
   })()
 </script>
