@@ -246,52 +246,52 @@ const total = rendered.length
 
 <script is:inline>
   (function () {
-    function run() {
-      var bar = document.getElementById("shuoshuo-tag-bar")
-      var cards = document.querySelectorAll(".shuoshuo-card")
-      var totalEl = document.getElementById("shuoshuo-total")
-      if (!bar || !cards.length || !totalEl) return
+    var bar = document.getElementById("shuoshuo-tag-bar")
+    var totalEl = document.getElementById("shuoshuo-total")
+    if (!bar || !totalEl) return
 
-      var barButtons = bar.querySelectorAll(".shuoshuo-bar-btn")
+    var barButtons = bar.querySelectorAll(".shuoshuo-bar-btn")
 
-      function activate(btn) {
-        barButtons.forEach(function (b) {
-          b.style.backgroundColor = ""
-          b.style.color = ""
-        })
-        btn.style.backgroundColor = "var(--primary)"
-        btn.style.color = "white"
-      }
-
-      function filterByTag(tag) {
-        var n = 0
-        cards.forEach(function (c) {
-          var ct = (c.getAttribute("data-tags") || "").split(",")
-          if (!tag || ct.indexOf(tag) >= 0) { c.style.display = ""; n++ }
-          else { c.style.display = "none" }
-        })
-        totalEl.textContent = n
-      }
-
-      barButtons.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var t = this.getAttribute("data-tag") || ""
-          activate(this)
-          filterByTag(t)
-        })
+    // 激活标签按钮样式
+    function activate(btn) {
+      barButtons.forEach(function (b) {
+        b.style.background = ""
+        b.style.color = ""
       })
-
-      document.querySelectorAll(".shuoshuo-card-tag").forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-          e.stopPropagation()
-          var t = this.getAttribute("data-tag") || ""
-          var bb = bar.querySelector('.shuoshuo-bar-btn[data-tag="' + t.replace(/"/g, "") + '"]')
-          if (bb) activate(bb)
-          filterByTag(t)
-        })
-      })
+      btn.style.background = "var(--primary)"
+      btn.style.color = "white"
     }
 
-    document.addEventListener("astro:page-load", function () { setTimeout(run, 1) })
+    // 过滤卡片 & 更新计数
+    function filterByTag(tag) {
+      var cards = document.querySelectorAll(".shuoshuo-card")
+      var n = 0
+      cards.forEach(function (c) {
+        var ct = (c.getAttribute("data-tags") || "").split(",").filter(Boolean)
+        if (!tag || ct.indexOf(tag) >= 0) { c.style.display = ""; n++ }
+        else { c.style.display = "none" }
+      })
+      totalEl.textContent = String(n)
+    }
+
+    // 标签栏按钮点击
+    barButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var t = this.getAttribute("data-tag") || ""
+        activate(this)
+        filterByTag(t)
+      })
+    })
+
+    // 卡片内标签按钮点击 → 联动标签栏
+    document.querySelectorAll(".shuoshuo-card-tag").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation()
+        var t = this.getAttribute("data-tag") || ""
+        var bb = bar.querySelector('.shuoshuo-bar-btn[data-tag="' + t.replace(/"/g, "") + '"]')
+        if (bb) activate(bb)
+        filterByTag(t)
+      })
+    })
   })()
 </script>
