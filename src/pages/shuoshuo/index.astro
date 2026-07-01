@@ -53,43 +53,30 @@ const total = rendered.length
   headings={headings}
 >
 
-  <!-- ═══ 顶部标题卡片 ═══ -->
   <div class="card-base rounded-(--radius-xl) px-8 py-6 mb-4 bg-(--primary)">
     <div class="flex justify-between items-center">
       <div>
-        <div class="text-2xl font-bold text-white">
-          {i18n(I18nKey.shuoshuo)}
-        </div>
-        <div class="text-sm text-white/80 mt-1">
-          随时随地，分享生活
-        </div>
+        <div class="text-2xl font-bold text-white">{i18n(I18nKey.shuoshuo)}</div>
+        <div class="text-sm text-white/80 mt-1">随时随地，分享生活</div>
       </div>
       <div class="text-right">
-        <div class="text-3xl font-bold text-white" id="shuoshuo-total">
-          {total}
-        </div>
-        <div class="text-xs text-white/70 mt-0.5">
-          条说说
-        </div>
+        <div class="text-3xl font-bold text-white" id="shuoshuo-total">{total}</div>
+        <div class="text-xs text-white/70 mt-0.5">条说说</div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ 标签过滤栏 ═══ -->
   {allTags.length > 0 && (
     <div class="card-base rounded-(--radius-xl) px-6 py-3 mb-4" id="shuoshuo-tag-bar">
       <div class="flex flex-wrap gap-2">
         <button
           class="shuoshuo-bar-btn rounded-full px-4 py-1.5 text-sm font-medium
                  transition-all duration-200 hover:scale-105 active:scale-95
-                 flex items-center gap-1.5
-                 bg-(--primary)/10 text-(--primary)"
+                 flex items-center gap-1.5 bg-(--primary)/10 text-(--primary)"
           style="background: var(--primary); color: white"
           data-tag=""
         >
-          <Icon is:inline
-                name="material-symbols:grid-view-outline-rounded"
-                class="text-base" />
+          <Icon is:inline name="material-symbols:grid-view-outline-rounded" class="text-base" />
           说说 ({total})
         </button>
         {allTags.map(tag => (
@@ -106,7 +93,6 @@ const total = rendered.length
     </div>
   )}
 
-  <!-- ═══ 说说卡片列表 ═══ -->
   <div class="flex flex-col gap-4" id="shuoshuo-list">
     {rendered.length === 0 ? (
       <div class="card-base rounded-(--radius-large) p-12 text-center text-(--content-meta)">
@@ -123,15 +109,11 @@ const total = rendered.length
         const tagList: string[] = item.data.tags || []
 
         return (
-          <div
-            class="card-base rounded-(--radius-large) p-5 md:p-6 relative shuoshuo-card"
-            data-tags={tagList.join(",")}
-          >
+          <div class="card-base rounded-(--radius-large) p-5 md:p-6 relative shuoshuo-card"
+               data-tags={tagList.join(",")}>
             <div class="flex items-center gap-3 mb-4">
               <div class="w-10 h-10 rounded-full bg-(--primary) flex items-center
-                          justify-center text-white font-bold shrink-0">
-                F
-              </div>
+                          justify-center text-white font-bold shrink-0">F</div>
               <div class="flex-1 min-w-0">
                 <div class="font-bold text-sm text-black/75 dark:text-white/75">
                   {profileConfig.name}
@@ -151,11 +133,9 @@ const total = rendered.length
               )}
             </div>
 
-            <div
-              class="text-base text-black/80 dark:text-white/80 leading-relaxed
-                     mb-4 markdown-content shuoshuo-body"
-              style={`font-family: ${bodyFontFamily}`}
-            >
+            <div class="text-base text-black/80 dark:text-white/80 leading-relaxed
+                        mb-4 markdown-content shuoshuo-body"
+                 style={`font-family: ${bodyFontFamily}`}>
               <item.Content />
             </div>
 
@@ -165,8 +145,7 @@ const total = rendered.length
                 {images.slice(0, 9).map((img, idx) => {
                   const isOverflow = idx === 8 && images.length > 9
                   return (
-                    <a href={img}
-                       data-fancybox={`shuoshuo-${item.id}`}
+                    <a href={img} data-fancybox={`shuoshuo-${item.id}`}
                        class="block relative aspect-square overflow-hidden
                               bg-black/5 dark:bg-white/5">
                       <img src={img} alt="" loading="lazy" decoding="async"
@@ -189,10 +168,8 @@ const total = rendered.length
                   <div class="rounded-xl overflow-hidden bg-black">
                     <Fragment set:html={renderVideoHtml({
                       type: video.type as "bilibili" | "youtube" | "direct",
-                      bvid: video.bvid,
-                      youtubeId: video.youtubeId,
-                      src: video.src,
-                      title: video.title,
+                      bvid: video.bvid, youtubeId: video.youtubeId,
+                      src: video.src, title: video.title,
                     })} />
                   </div>
                 ))}
@@ -209,9 +186,7 @@ const total = rendered.length
                            hover:bg-(--primary)/20 hover:scale-105
                            active:scale-95 transition-all duration-200 font-medium"
                     data-tag={tag}
-                  >
-                    {tag}
-                  </button>
+                  >{tag}</button>
                 ))}
               </div>
             )}
@@ -227,71 +202,61 @@ const total = rendered.length
 <style is:global>
   .shuoshuo-body { line-height: 1.75; }
   .shuoshuo-body p { margin-bottom: 0.75em; }
-  .shuoshuo-body a {
-    color: var(--primary);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
+  .shuoshuo-body a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
   .shuoshuo-body a:hover { opacity: 0.8; }
   .shuoshuo-body img { display: none; }
   .shuoshuo-body code {
-    font-family: var(--font-jetbrains-mono), monospace;
-    font-size: 0.9em;
-    background: var(--inline-code-bg);
-    color: var(--inline-code-color);
-    padding: 0.1em 0.3em;
-    border-radius: 0.3em;
+    font-family: var(--font-jetbrains-mono), monospace; font-size: 0.9em;
+    background: var(--inline-code-bg); color: var(--inline-code-color);
+    padding: 0.1em 0.3em; border-radius: 0.3em;
   }
 </style>
 
-<script is:inline>
+<script>
   (function () {
-    var bar = document.getElementById("shuoshuo-tag-bar")
-    var totalEl = document.getElementById("shuoshuo-total")
-    if (!bar || !totalEl) return
-
-    var barButtons = bar.querySelectorAll(".shuoshuo-bar-btn")
-
-    // 激活标签按钮样式
-    function activate(btn) {
-      barButtons.forEach(function (b) {
-        b.style.background = ""
-        b.style.color = ""
-      })
-      btn.style.background = "var(--primary)"
-      btn.style.color = "white"
-    }
-
-    // 过滤卡片 & 更新计数
-    function filterByTag(tag) {
+    new MutationObserver(function () {
+      var bar = document.getElementById("shuoshuo-tag-bar")
       var cards = document.querySelectorAll(".shuoshuo-card")
-      var n = 0
-      cards.forEach(function (c) {
-        var ct = (c.getAttribute("data-tags") || "").split(",").filter(Boolean)
-        if (!tag || ct.indexOf(tag) >= 0) { c.style.display = ""; n++ }
-        else { c.style.display = "none" }
-      })
-      totalEl.textContent = String(n)
-    }
+      var totalEl = document.getElementById("shuoshuo-total")
+      // 三个元素必须全部就绪才初始化，否则等待下一次 Mutation
+      if (!bar || !cards.length || !totalEl || bar.dataset.filterReady) return
+      bar.dataset.filterReady = "1"
 
-    // 标签栏按钮点击
-    barButtons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var t = this.getAttribute("data-tag") || ""
-        activate(this)
-        filterByTag(t)
-      })
-    })
+      var barButtons = bar.querySelectorAll(".shuoshuo-bar-btn")
 
-    // 卡片内标签按钮点击 → 联动标签栏
-    document.querySelectorAll(".shuoshuo-card-tag").forEach(function (btn) {
-      btn.addEventListener("click", function (e) {
-        e.stopPropagation()
-        var t = this.getAttribute("data-tag") || ""
-        var bb = bar.querySelector('.shuoshuo-bar-btn[data-tag="' + t.replace(/"/g, "") + '"]')
-        if (bb) activate(bb)
-        filterByTag(t)
+      function activate(btn) {
+        barButtons.forEach(function (b) { b.style.backgroundColor = ""; b.style.color = "" })
+        btn.style.backgroundColor = "var(--primary)"
+        btn.style.color = "white"
+      }
+
+      function filterByTag(tag) {
+        var n = 0
+        cards.forEach(function (c) {
+          var ct = (c.getAttribute("data-tags") || "").split(",")
+          if (!tag || ct.indexOf(tag) >= 0) { c.style.display = ""; n++ }
+          else { c.style.display = "none" }
+        })
+        totalEl.textContent = n
+      }
+
+      barButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var t = this.getAttribute("data-tag") || ""
+          activate(this)
+          filterByTag(t)
+        })
       })
-    })
+
+      document.querySelectorAll(".shuoshuo-card-tag").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation()
+          var t = this.getAttribute("data-tag") || ""
+          var bb = bar.querySelector('.shuoshuo-bar-btn[data-tag="' + t.replace(/"/g, "") + '"]')
+          if (bb) activate(bb)
+          filterByTag(t)
+        })
+      })
+    }).observe(document.documentElement, { childList: true, subtree: true })
   })()
 </script>
