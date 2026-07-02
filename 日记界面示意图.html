@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日记界面示意图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+  }
+  .diagram {
+    width: 100%;
+    max-width: 800px;
+  }
+  .title-bar {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .title-bar h1 {
+    font-size: 20px;
+    color: #94a3b8;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+  .phone-frame {
+    width: 420px;
+    margin: 0 auto;
+    background: #1e293b;
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .phone-screen {
+    background: #0a0a0f;
+    border-radius: 28px;
+    overflow: hidden;
+    padding: 20px 16px;
+    min-height: 680px;
+    position: relative;
+  }
+  /* Status bar */
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    font-size: 11px;
+    color: #64748b;
+  }
+  /* Header / Banner */
+  .banner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+    text-align: center;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+  }
+  .banner .count {
+    font-size: 40px;
+    font-weight: 700;
+    color: #818cf8;
+    line-height: 1;
+  }
+  .banner .label {
+    font-size: 13px;
+    color: #a5b4fc;
+    margin-top: 4px;
+  }
+  .banner .subtitle {
+    font-size: 11px;
+    color: #6366f1;
+    margin-top: 6px;
+    opacity: 0.8;
+  }
+  /* Diary entries */
+  .entry {
+    background: #1a1d2e;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .entry .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .entry .content {
+    flex: 1;
+    min-width: 0;
+  }
+  .entry .text {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+  .entry .meta {
+    font-size: 11px;
+    color: #475569;
+    margin-top: 6px;
+    display: flex;
+    gap: 12px;
+  }
+  .entry .thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background: #1e293b;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #475569;
+  }
+  /* Tag bar */
+  .tag-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    padding: 4px 0;
+  }
+  .tag {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    white-space: nowrap;
+  }
+  .tag.active {
+    background: rgba(99, 102, 241, 0.3);
+    border-color: #818cf8;
+    color: #c7d2fe;
+  }
+  .tag .count {
+    opacity: 0.6;
+    font-size: 11px;
+  }
+  /* Annotation arrows */
+  .annotations {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .anno {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #94a3b8;
+    padding-left: 10px;
+  }
+  .anno .marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .marker.purple { background: #818cf8; }
+  .marker.blue   { background: #38bdf8; }
+  .marker.green  { background: #34d399; }
+  .marker.amber  { background: #fbbf24; }
+  .divider {
+    border: none;
+    border-top: 1px dashed rgba(99, 102, 241, 0.2);
+    margin: 16px 0;
+  }
+  /* Side notes */
+  .side-notes {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #64748b;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .side-notes strong { color: #818cf8; }
+</style>
+</head>
+<body>
+<div class="diagram">
+  <div class="title-bar">
+    <h1>📋 日记界面结构示意</h1>
+  </div>
+
+  <!-- Phone mockup -->
+  <div class="phone-frame">
+    <div class="phone-screen">
+
+      <!-- Status bar -->
+      <div class="status-bar">
+        <span>9:41</span>
+        <span>📶 🔋</span>
+      </div>
+
+      <!-- Banner -->
+      <div class="banner">
+        <div class="count">日 记 5</div>
+        <div class="label">📝 我的日记</div>
+        <div class="subtitle">随时随地，分享生活条日记</div>
+      </div>
+
+      <!-- Entry 1 -->
+      <div class="entry">
+        <div class="avatar">😊</div>
+        <div class="content">
+          <div class="text">今天完成了 Blender 渲染，效果还不错～</div>
+          <div class="meta">
+            <span>🕐 6月28日</span>
+            <span>💬 2</span>
+            <span>❤️ 5</span>
+          </div>
+        </div>
+        <div class="thumb">🖼️</div>
+      </div>
+
+      <!-- Entry 2 -->
+      <div class="entry">
+        <div class="avatar">🎬</div>
+        <div class="content">
+          <div class="text">B站新视频已发布！3D建模教程第3期</div>
+          <div class="meta">
+            <span>🕐 6月25日</span>
+            <span>💬 8</span>
+            <span>❤️ 23</span>
+          </div>
+        </div>
+        <div class="thumb">🎥</div>
+      </div>
+
+      <!-- Entry 3 -->
+      <div class="entry">
+        <div class="avatar">🎨</div>
+        <div class="content">
+          <div class="text">新的3D场景搭建中，先放一张渲染图</div>
+          <div class="meta">
+            <span>🕐 6月20日</span>
+            <span>💬 1</span>
+            <span>❤️ 7</span>
+          </div>
+        </div>
+        <div class="thumb">🖼️</div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Tag bar -->
+      <div class="tag-bar">
+        <div class="tag">🏷️ 全部</div>
+        <div class="tag">3d</div>
+        <div class="tag active">📺 Bilibili <span class="count">3</span></div>
+        <div class="tag">🔧 blender <span class="count">1</span></div>
+        <div class="tag">🖼️ 渲染图 <span class="count">1</span></div>
+      </div>
+
+    </div><!-- /phone-screen -->
+  </div><!-- /phone-frame -->
+
+  <!-- Annotations -->
+  <div class="annotations">
+    <div class="anno">
+      <div class="marker purple"></div>
+      <span><strong>顶部 Banner</strong> — 日记总数 + 标语「随时随地，分享生活条日记」</span>
+    </div>
+    <div class="anno">
+      <div class="marker blue"></div>
+      <span><strong>日记条目列表</strong> — 带头像、正文、时间、互动数、缩略图</span>
+    </div>
+    <div class="anno">
+      <div class="marker green"></div>
+      <span><strong>底部分类标签</strong> — 3d / Bilibili(3) / blender(1) / 渲染图(1)，可按标签筛选</span>
+    </div>
+  </div>
+
+  <div class="side-notes">
+    根据企业微信截图 OCR 识别重建 | <strong>日记 5</strong> 表示共有 5 篇日记<br>
+    标签数字表示该分类下的日记数量
+  </div>
+</div>
+</body>
+</html>
