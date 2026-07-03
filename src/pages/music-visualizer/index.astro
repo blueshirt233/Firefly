@@ -1,5 +1,5 @@
 ---
-// 音乐可视化 — sonic-topography 全屏嵌入
+// 音乐可视化 -- sonic-topography 全屏嵌入
 import MusicManager from "@components/features/MusicManager.astro"
 import I18nKey from "@/i18n/i18nKey"
 import { i18n } from "@/i18n/translation"
@@ -21,13 +21,11 @@ const desc = i18n(I18nKey.musicVisualizerDesc)
   </style>
 </head>
 <body>
-  <!-- 音乐管理器 (全局单例, 提供 window.__fireflyMusic) -->
   <MusicManager />
 
   <iframe id="sonic-iframe" src="/sonic-topography/index.html" allow="autoplay"></iframe>
 
   <script is:inline>
-    // ── Firefly 博客音乐模块 → sonic-topography 桥接 ──
     (function() {
       var iframe = document.getElementById('sonic-iframe');
       var mgr = window.__fireflyMusic;
@@ -47,18 +45,10 @@ const desc = i18n(I18nKey.musicVisualizerDesc)
               artist: state.track.artist,
               url: state.track.url,
               pic: state.track.pic || '',
+              lrc: state.track.lrc || ''  // 传送歌词URL
             }
           });
         }
-      }
-
-      function syncPlaylist() {
-        var state = mgr.getState();
-        post({
-          type: 'firefly-playlist',
-          playlist: state.playlist,
-          currentIndex: state.currentIndex,
-        });
       }
 
       function syncPlayState() {
@@ -66,18 +56,27 @@ const desc = i18n(I18nKey.musicVisualizerDesc)
         post({ type: state.isPlaying ? 'firefly-play' : 'firefly-pause' });
       }
 
-      // 初始化
-      mgr.init();
-      iframe.addEventListener('load', function() {
-        setTimeout(function() {
-          syncPlaylist();
-          syncTrack();
-          syncPlayState();
-        }, 1000);
+      // 监听 fm:init -- API返回后自动同步歌单+歌曲+歌词
+      window.addEventListener('fm:init', function() {
+        var state = mgr.getState();
+        post({ type: 'firefly-playlist', playlist: state.playlist, currentIndex: state.currentIndex });
+        syncTrack();
+        syncPlayState();
       });
 
+      // 后续切歌/播放暂停实时同步
       window.addEventListener('fm:track', syncTrack);
       window.addEventListener('fm:play-state', syncPlayState);
+
+      // 兜底: 如果已初始化过, fm:init 不会二次触发, 直接读状态发
+      mgr.init().then(function() {
+        var state = mgr.getState();
+        if (state.playlist && state.playlist.length > 0) {
+          post({ type: 'firefly-playlist', playlist: state.playlist, currentIndex: state.currentIndex });
+          syncTrack();
+          syncPlayState();
+        }
+      });
     })();
   </script>
 </body>
