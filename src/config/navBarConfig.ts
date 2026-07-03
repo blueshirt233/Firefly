@@ -45,6 +45,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		url: "#",
 		icon: "material-symbols:person",
 		children: [
+			// 音乐可视化
+			LinkPresets.MusicVisualizer,
+
 			// 相册
 			LinkPresets.Gallery,
 			LinkPresets.shuoshuo,
@@ -92,7 +95,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			},
 			{
 				name: "QQ交流群",
-				url: "https://qm.qq.com/q/ZGsFa8qX2G",
+				url: "https://qm.qq.com/q/ZGs8FaqX2G",
 				external: true,
 				icon: "fa7-brands:qq",
 			},
@@ -193,6 +196,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/anime/",
 		icon: "material-symbols:live-tv",
 		pageKey: "anime",
+	},
+	MusicVisualizer: {
+		name: "音乐可视化",
+		url: "/music-visualizer/",
+		icon: "material-symbols:music-note-rounded",
+		pageKey: "musicVisualizer",
 	},
 };
 

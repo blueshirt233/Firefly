@@ -1,0 +1,84 @@
+---
+// 音乐可视化 — sonic-topography 全屏嵌入
+import MusicManager from "@components/features/MusicManager.astro"
+import I18nKey from "@/i18n/i18nKey"
+import { i18n } from "@/i18n/translation"
+
+const title = i18n(I18nKey.musicVisualizer)
+const desc = i18n(I18nKey.musicVisualizerDesc)
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title} - Firefly</title>
+  <meta name="description" content={desc} />
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+    iframe { border: none; width: 100%; height: 100%; display: block; }
+  </style>
+</head>
+<body>
+  <!-- 音乐管理器 (全局单例, 提供 window.__fireflyMusic) -->
+  <MusicManager />
+
+  <iframe id="sonic-iframe" src="/sonic-topography/index.html" allow="autoplay"></iframe>
+
+  <script is:inline>
+    // ── Firefly 博客音乐模块 → sonic-topography 桥接 ──
+    (function() {
+      var iframe = document.getElementById('sonic-iframe');
+      var mgr = window.__fireflyMusic;
+      if (!mgr || !iframe) return;
+
+      function post(data) {
+        iframe.contentWindow && iframe.contentWindow.postMessage(data, '*');
+      }
+
+      function syncTrack() {
+        var state = mgr.getState();
+        if (state.track) {
+          post({
+            type: 'firefly-sync-track',
+            track: {
+              name: state.track.name,
+              artist: state.track.artist,
+              url: state.track.url,
+              pic: state.track.pic || '',
+            }
+          });
+        }
+      }
+
+      function syncPlaylist() {
+        var state = mgr.getState();
+        post({
+          type: 'firefly-playlist',
+          playlist: state.playlist,
+          currentIndex: state.currentIndex,
+        });
+      }
+
+      function syncPlayState() {
+        var state = mgr.getState();
+        post({ type: state.isPlaying ? 'firefly-play' : 'firefly-pause' });
+      }
+
+      // 初始化
+      mgr.init();
+      iframe.addEventListener('load', function() {
+        setTimeout(function() {
+          syncPlaylist();
+          syncTrack();
+          syncPlayState();
+        }, 1000);
+      });
+
+      window.addEventListener('fm:track', syncTrack);
+      window.addEventListener('fm:play-state', syncPlayState);
+    })();
+  </script>
+</body>
+</html>
