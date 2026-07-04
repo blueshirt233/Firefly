@@ -1,83 +1,22 @@
 ---
-// 音乐可视化 -- sonic-topography 全屏嵌入
-import MusicManager from "@components/features/MusicManager.astro"
+// 音乐可视化 — sonic-topography 全屏嵌入
+// 进入页面时暂停博客 MusicPlayer, 可视化不自动播放
 import I18nKey from "@/i18n/i18nKey"
 import { i18n } from "@/i18n/translation"
-
 const title = i18n(I18nKey.musicVisualizer)
-const desc = i18n(I18nKey.musicVisualizerDesc)
 ---
-
 <!doctype html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>{title} - Firefly</title>
-  <meta name="description" content={desc} />
+  <title>{title}</title>
   <style>
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
-    iframe { border: none; width: 100%; height: 100%; display: block; }
+    html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000}
+    iframe{border:none;width:100%;height:100%}
   </style>
 </head>
 <body>
-  <MusicManager />
-
-  <iframe id="sonic-iframe" src="/sonic-topography/index.html" allow="autoplay"></iframe>
-
-  <script is:inline>
-    (function() {
-      var iframe = document.getElementById('sonic-iframe');
-      var mgr = window.__fireflyMusic;
-      if (!mgr || !iframe) return;
-
-      function post(data) {
-        iframe.contentWindow && iframe.contentWindow.postMessage(data, '*');
-      }
-
-      function syncTrack() {
-        var state = mgr.getState();
-        if (state.track) {
-          post({
-            type: 'firefly-sync-track',
-            track: {
-              name: state.track.name,
-              artist: state.track.artist,
-              url: state.track.url,
-              pic: state.track.pic || '',
-              lrc: state.track.lrc || ''  // 传送歌词URL
-            }
-          });
-        }
-      }
-
-      function syncPlayState() {
-        var state = mgr.getState();
-        post({ type: state.isPlaying ? 'firefly-play' : 'firefly-pause' });
-      }
-
-      // 监听 fm:init -- API返回后自动同步歌单+歌曲+歌词
-      window.addEventListener('fm:init', function() {
-        var state = mgr.getState();
-        post({ type: 'firefly-playlist', playlist: state.playlist, currentIndex: state.currentIndex });
-        syncTrack();
-        syncPlayState();
-      });
-
-      // 后续切歌/播放暂停实时同步
-      window.addEventListener('fm:track', syncTrack);
-      window.addEventListener('fm:play-state', syncPlayState);
-
-      // 兜底: 如果已初始化过, fm:init 不会二次触发, 直接读状态发
-      mgr.init().then(function() {
-        var state = mgr.getState();
-        if (state.playlist && state.playlist.length > 0) {
-          post({ type: 'firefly-playlist', playlist: state.playlist, currentIndex: state.currentIndex });
-          syncTrack();
-          syncPlayState();
-        }
-      });
-    })();
-  </script>
+  <iframe src="/sonic-topography/index.html" allow="autoplay"></iframe>
 </body>
 </html>
