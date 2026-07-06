@@ -1,5 +1,5 @@
 ---
-// 音乐可视化页面 - 移动端响应式：CSS transform 等比缩放
+// 音乐可视化页面 - 全屏 iframe
 import I18nKey from "@/i18n/i18nKey"
 import { i18n } from "@/i18n/translation"
 ---
@@ -7,33 +7,15 @@ import { i18n } from "@/i18n/translation"
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{i18n(I18nKey.musicVisualizer)}</title>
-  <style is:global>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html,body{width:100%;height:100%;overflow:hidden;background:#000}
-    .stage{position:absolute;width:1280px;height:720px;transform-origin:top left}
-    iframe{border:none;width:100%;height:100%;display:block}
-    astro-dev-toolbar,astro-dev-overlay{display:none!important}
+  <style>
+    html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#000; }
+    iframe { border:none; width:100%; height:100%; }
+    astro-dev-toolbar, astro-dev-overlay { display: none !important; }
   </style>
 </head>
 <body>
-  <div class="stage" id="stage">
-    <iframe src="/sonic-topography/index.html" allow="autoplay;fullscreen" title={i18n(I18nKey.musicVisualizer)}></iframe>
-  </div>
-  <script>
-    var DW = 1280, DH = 720;
-    function resize() {
-      var w = window.innerWidth, h = window.innerHeight;
-      var s = Math.min(w / DW, h / DH);
-      var stage = document.getElementById('stage');
-      stage.style.transform = 'scale(' + s + ')';
-      stage.style.left = ((w - DW * s) / 2) + 'px';
-      stage.style.top = ((h - DH * s) / 2) + 'px';
-    }
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', function() { setTimeout(resize, 200); });
-    resize();
-  </script>
+  <iframe src="/sonic-topography/index.html" allow="autoplay" title={i18n(I18nKey.musicVisualizer)}></iframe>
 </body>
 </html>
