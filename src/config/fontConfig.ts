@@ -103,7 +103,7 @@ export const fontConfig: FontSelectionConfig = {
 	codeFont: "--font-jetbrains-mono",
 
 	// 说说的正文字体（留空则使用全局 selected 字体）
-	shuoshuoBodyFont: "",
+	shuoshuoBodyFont: "--font-inter",
 
 	// 本地字体子集化配置（构建时由 scripts/subset-fonts.ts 处理）
 	// key 为 fonts 数组中对应的 cssVariable，value 为子集化选项

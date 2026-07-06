@@ -15,14 +15,15 @@ export function resolveImagePath(image: string, entryFilePath: string): string {
 }
 
 // Generate responsive Bilibili player iframe (16:9, mobile-friendly)
+// autoplay=0 禁止自动播放，显示封面+播放按钮，需用户手动点击
 export function getBilibiliEmbedHtml(bvid: string, title?: string): string {
   const t = title ? `&t=${encodeURIComponent(title)}` : ""
-  return `<div class="relative w-full shuoshuo-video-wrapper" style="padding-top: 56.25%"><iframe src="https://player.bilibili.com/player.html?bvid=${bvid}&page=1&high_quality=1&as_wide=1${t}" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" class="absolute top-0 left-0 w-full h-full rounded-lg" loading="lazy" title="Bilibili"></iframe></div>`
+  return `<div class="relative w-full shuoshuo-video-wrapper" style="padding-top: 56.25%"><iframe src="https://player.bilibili.com/player.html?bvid=${bvid}&page=1&high_quality=1&as_wide=1&autoplay=0${t}" allow="encrypted-media; fullscreen; picture-in-picture" class="absolute top-0 left-0 w-full h-full rounded-lg" loading="lazy" title="Bilibili"></iframe></div>`
 }
 
 // Generate YouTube no-cookie embed iframe
 export function getYoutubeEmbedHtml(youtubeId: string): string {
-  return `<iframe src="https://www.youtube-nocookie.com/embed/${youtubeId}" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen class="w-full rounded-lg" style="aspect-ratio: 16/9; min-height: 360px;" loading="lazy"></iframe>`
+  return `<iframe src="https://www.youtube-nocookie.com/embed/${youtubeId}" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen class="w-full rounded-lg" style="aspect-ratio: 16/9; min-height: 360px;" loading="lazy"></iframe>`
 }
 
 // Dispatch to correct embed function based on video type
