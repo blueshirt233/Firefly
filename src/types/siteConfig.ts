@@ -82,21 +82,11 @@ export type SiteConfig = {
 		friends: boolean; // 友链页面开关
 		sponsor: boolean; // 打赏页面开关
 		guestbook: boolean; // 留言板页面开关
-		bangumi: boolean; // Bangumi页面开关
+		bangumi: boolean;
 		gallery: boolean; // 相册页面开关
-		devices: boolean; // 设备页面开关
-		diary: boolean; // 日记页面开关
-		projects: boolean; // 项目页面开关
-		timeline: boolean; // 时间线页面开关
-		skills: boolean; // 技能页面开关
+		anime: boolean; // 追番页面开关
+		shuoshuo: boolean; // 说说板块开关
 	};
-
-	// 日记页面配置
-	diary: {
-		// 默认头像
-		defaultAvatar:
-			"https://i.postimg.cc/7YLVJqnp/wei-xin-tu-pian-2026-05-07-020150-883.jpg",
-	},
 
 	// 分类导航栏开关
 	categoryBar?: boolean;
@@ -111,8 +101,6 @@ export type SiteConfig = {
 		showTags: boolean; // 是否在文章列表中显示标签
 		descriptionLines?: number; // 文章简介显示行数，设为 0 则不截断，默认 2
 		allowSwitch: boolean; // 是否允许用户切换布局
-		allowCoverSwitch: boolean; // 是否允许用户切换文章封面图显示
-		showCover: boolean; // 是否在文章列表中显示封面图
 		grid: {
 			// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
 			// 是否开启瀑布流布局
@@ -148,27 +136,22 @@ export type SiteConfig = {
 		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[]; // 条目类型排序顺序
 	};
 
+	// 追番配置（Bilibili + TMDB）
+	anime?: {
+		bilibili?: {
+			uid: string; // Bilibili 用户 UID
+		};
+		tmdb?: {
+			apiKey: string; // TMDB API Key
+			listId: string; // TMDB 列表 ID
+		};
+	};
+
 	// 分页配置
 	pagination: {
 		postsPerPage: number; // 每页显示的文章数量
 	};
 
-	// 音乐配置
-	music?: {
-		playlists?: {
-			id: string;
-			name: string;
-			server?: string;
-			type?: string;
-		}[];
-	};
-
-	devtoolsWarning: {
-        enable: boolean; // 是否启用
-        message?: string; // 提示信息内容，留空为默认
-        time?: number; // 提示信息显示时间，单位秒
-    };
-	
 	// 图片优化配置
 	imageOptimization?: {
 		/**

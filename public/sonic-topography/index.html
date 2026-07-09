@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonic Topography</title>
+    <link rel="stylesheet" crossorigin href="./assets/index-BjlI0oHW.css">
+    <script>
+    var L=function(t,m){console.log('%c['+t+']','color:#0f0',m)};
+    var orig=window.fetch, cache={}; window.__mc=cache;
+
+    window.fetch=function(u,o){
+      var s=typeof u=='string'?u:(u instanceof Request?u.url:String(u));
+      var ru=s;
+      if(s.indexOf('/api/meting/search')>=0){
+        var kw=(s.match(/[?&]keywords=([^&]+)/)||[])[1]||'';
+        ru='https://meting.mikus.ink/api?server=netease&type=search&id='+decodeURIComponent(kw)+'&limit=30';
+      }
+      if(s.indexOf('/api/meting/playlist')>=0){
+        var pid=(s.match(/[?&]id=([^&]+)/)||[])[1]||'8941221193';
+        var psvr=(s.match(/[?&]server=([^&]+)/)||[])[1]||'tencent';
+        ru='https://meting.mikus.ink/api?server='+psvr+'&type=playlist&id='+pid;
+      }
+      if(ru.indexOf('meting.mikus.ink/api')>=0&&(ru.indexOf('type=search')>=0||ru.indexOf('type=playlist')>=0)){
+        return orig(ru,o).then(function(r){
+          if(!r.ok)return r;
+          return r.json().then(function(d){
+            var svr=ru.indexOf('tencent')>=0?'tencent':'netease';
+            var songs=[],arr=Array.isArray(d)?d:(Array.isArray(d.songs)?d.songs:[]);
+            for(var i=0;i<arr.length;i++){
+              var x=arr[i],sid='meting-'+i;
+              songs.push({
+                provider:'meting',id:sid,mid:'',songmid:'',
+                name:x.title||x.name||'',artist:x.author||x.artist||'',
+                cover:'',album:'',duration:0,fee:0,
+                _metingUrl:x.url,_metingLrc:x.lrc,_metingServer:svr
+              });
+              if(x.url&&x.lrc)cache[sid]={url:x.url,lrc:x.lrc};
+            }
+            return new Response(JSON.stringify({songs:songs,rawCount:songs.length}),
+              {status:200,headers:{'Content-Type':'application/json; charset=UTF-8'}});
+          });
+        });
+      }
+
+      // Lyric: return PLAIN TEXT (App's Meting branch uses .text())
+      if(s.indexOf('/api/meting/lyric')>=0||s.indexOf('/api/netease/lyric')>=0){
+        var m2=s.match(/[?&]id=([^&]+)/),mid2=m2?decodeURIComponent(m2[1]):null;
+        if(mid2&&cache[mid2]&&cache[mid2].lrc){
+          return orig(cache[mid2].lrc).then(function(r){
+            return r.text().then(function(t){
+              return new Response(t,
+                {status:200,headers:{'Content-Type':'text/plain; charset=UTF-8'}});
+            });
+          }).catch(function(){return new Response('',{status:500});});
+        }
+      }
+
+      return orig(ru,o);
+    };
+
+    var _d=Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype,'src');
+    Object.defineProperty(HTMLAudioElement.prototype,'src',{get:_d.get,set:function(v){
+      if(typeof v=='string'&&(v.indexOf('/api/netease/audio')>=0||v.indexOf('/api/meting/audio')>=0)){
+        var im=v.match(/[?&]id=([^&]+)/),imid=im?decodeURIComponent(im[1]):null;
+        if(imid){
+          if(cache[imid]&&cache[imid].url)v=cache[imid].url;
+          else{var svr=(v.match(/[?&]server=([^&]+)/)||[])[1]||'netease';v='https://meting.mikus.ink/api?server='+svr+'&type=url&id='+imid}
+        }
+      }
+      _d.set.call(this,v);
+    }});
+
+    if(!localStorage.getItem('sonic-topography-search-provider-v1'))
+      localStorage.setItem('sonic-topography-search-provider-v1','meting');
+
+    L('INIT','v6');
+    </script>
+    <script type="module" crossorigin src="./assets/index-DG_ni7Kd.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

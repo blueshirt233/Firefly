@@ -1,0 +1,21 @@
+---
+// 音乐可视化页面 - 全屏 iframe
+import I18nKey from "@/i18n/i18nKey"
+import { i18n } from "@/i18n/translation"
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{i18n(I18nKey.musicVisualizer)}</title>
+  <style>
+    html, body { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#000; }
+    iframe { border:none; width:100%; height:100%; }
+    astro-dev-toolbar, astro-dev-overlay { display: none !important; }
+  </style>
+</head>
+<body>
+  <iframe src="/sonic-topography/index.html" allow="autoplay" title={i18n(I18nKey.musicVisualizer)}></iframe>
+</body>
+</html>

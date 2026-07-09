@@ -6,17 +6,10 @@ import Calendar from "@/components/widget/Calendar.astro";
 import Categories from "@/components/widget/Categories.astro";
 import Music from "@/components/widget/Music.astro";
 import Profile from "@/components/widget/Profile.astro";
-import Schedule from "@/components/widget/Schedule.astro";
 import SidebarTOC from "@/components/widget/SidebarTOC.astro";
 import SiteInfo from "@/components/widget/SiteInfo.astro";
 import SiteStats from "@/components/widget/SiteStats.astro";
 import Tags from "@/components/widget/Tags.astro";
-import RelationshipTimer from "@/components/widget/RelationshipTimer.astro";  // 引入恋爱计时组件
-import QuoteOfTheDay from "@/components/widget/QuoteOfTheDay.astro"; // 引入今日一言组件
-import UmamiStats from "@/components/widget/UmamiStats.astro"; // UmamiStats 组件
-import Weather from "@/components/widget/Weather.astro"; // 引入天气组件
-
-
 import { sidebarLayoutConfig } from "@/config";
 import type {
 	MobileBottomComponentConfig,
@@ -57,11 +50,6 @@ const componentMap = {
 	calendar: Calendar,
 	music: Music,
 	siteInfo: SiteInfo,
-	schedule: Schedule,
-	relationship: RelationshipTimer,
-	quoteOfTheDay: QuoteOfTheDay,
-	umamiStats: UmamiStats,
-	weather: Weather,
 };
 
 // 获取侧边栏位置
@@ -112,7 +100,7 @@ const getAnimationDelay = (index: number): string => {
 };
 
 // 判断当前页面是否为文章页面（服务端渲染时确定）
-const isPostPage = Astro.url.pathname.includes("/blog/");
+const isPostPage = Astro.url.pathname.includes("/posts/");
 
 // 判断组件在当前页面首屏是否可见（用于计算布局间距，避免隐藏组件占位）
 const isComponentInitiallyVisible = (
@@ -126,8 +114,8 @@ const isComponentInitiallyVisible = (
 		return false;
 	}
 	if (
-		"showOnNonPostPage" in config &&
-		config.showOnNonPostPage === false &&
+		"hideOnNonPostPage" in config &&
+		config.hideOnNonPostPage === true &&
 		!isPostPage
 	) {
 		return false;
@@ -146,7 +134,7 @@ const getComponentProps = (
 		widgetConfig: config,
 	};
 
-	// 添加 showOnPostPage 和 showOnNonPostPage 标记class（仅WidgetComponentConfig有这些属性）
+	// 添加 showOnPostPage 和 hideOnNonPostPage 标记class（仅WidgetComponentConfig有这些属性）
 	// 同时根据当前页面类型在服务端渲染时设置初始 hidden 状态，避免页面加载时闪烁
 	if ("showOnPostPage" in config && config.showOnPostPage === false) {
 		baseProps.class = `${baseProps.class} widget-hide-on-post`;
@@ -154,7 +142,7 @@ const getComponentProps = (
 			baseProps.class = `${baseProps.class} hidden`;
 		}
 	}
-	if ("showOnNonPostPage" in config && config.showOnNonPostPage === false) {
+	if ("hideOnNonPostPage" in config && config.hideOnNonPostPage === true) {
 		baseProps.class = `${baseProps.class} widget-hide-on-non-post`;
 		if (!isPostPage) {
 			baseProps.class = `${baseProps.class} hidden`;
@@ -196,7 +184,6 @@ const hasInitiallyVisibleTopComponents = topComponents.some(
 						const props = getComponentProps(comp, index) as any;
 						return <Component {...props} />;
 					})}
-					<UmamiStats class="onload-animation" style="animation-delay: 50ms" />
 				</div>
 			) : (
 				<>

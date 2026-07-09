@@ -31,7 +31,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 	// showTitle 是否显示该组件标题，默认true
 	// position 组件位置：top固定顶部，sticky粘性定位(会跟随页面滚动)
 	// showOnPostPage 是否在文章详情页显示该组件
-	// showOnNonPostPage 是否在非文章详情页显示该组件（除文章详情页外都显示）
+	// hideOnNonPostPage 是否在非文章详情页隐藏该组件（true=仅文章详情页显示）
 	// specificConfig 组件专属配置
 	leftComponents: [
 		{
@@ -94,50 +94,10 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 				collapseThreshold: 10,
 			},
 		},
-		{
-			// 组件类型：今日一言
-			type: "quoteOfTheDay",
-			// 是否启用该组件
-			enable: false,
-			// 组件位置
-			position: "sticky",
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-		},
-		{
-			// 组件类型：Umami 统计组件
-			type: "umamiStats",
-			// 是否启用该组件
-			enable: false,
-			// 组件位置
-			position: "sticky",
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-		},
-		{
-			// 组件类型：恋爱计时小组件
-			type: "relationship",
-			// 是否启用该组件
-			enable: false,
-			// 组件位置
-			position: "sticky",
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-		},
 	],
 
 	// 右侧边栏组件配置列表
 	rightComponents: [
-		{
-			// 组件类型：天气组件
-			type: "weather",
-			// 是否启用该组件
-			enable: true,
-			// 组件位置
-			position: "top",
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-		},
 		{
 			// 组件类型：站点统计组件
 			type: "stats",
@@ -161,7 +121,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			specificConfig: {
 				siteInfo: {
 					// 未能识别的构建平台回退显示文本，可自定义
-					unknownBuildPlatform: "EdgeOne",
+					unknownBuildPlatform: "Unknown CI",
 				},
 			},
 		},
@@ -193,8 +153,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			position: "sticky",
 			// 是否在文章详情页显示
 			showOnPostPage: true,
-			// 是否在非文章详情页显示
-			showOnNonPostPage: false,
+			// 是否在非文章详情页隐藏
+			hideOnNonPostPage: true,
 		},
 		{
 			// 组件类型：广告栏组件 1
@@ -252,16 +212,6 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 				},
 			},
 		},
-				{
-			// 组件类型：时间进度组件
-			type: "schedule",
-			// 是否启用该组件
-			enable: true,
-			// 组件位置
-			position: "sticky",
-			// 是否在文章详情页显示
-			showOnPostPage: false,
-		},
 	],
 
 	// 移动端底部组件配置列表
@@ -279,7 +229,15 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 组件类型：公告组件
 			type: "announcement",
 			// 是否启用该组件
-			enable: false,
+			enable: true,
+			// 是否在文章详情页显示
+			showOnPostPage: true,
+		},
+		{
+			// 组件类型：音乐播放器
+			type: "music",
+			// 是否启用该组件
+			enable: true,
 			// 是否在文章详情页显示
 			showOnPostPage: true,
 		},
@@ -287,7 +245,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 组件类型：分类组件
 			type: "categories",
 			// 是否启用该组件
-			enable: false,
+			enable: true,
 			// 是否在文章详情页显示
 			showOnPostPage: true,
 			// 组件专属配置
@@ -300,7 +258,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 组件类型：标签组件
 			type: "tags",
 			// 是否启用该组件
-			enable: false,
+			enable: true,
 			// 是否在文章详情页显示
 			showOnPostPage: true,
 			// 组件专属配置
@@ -313,7 +271,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 组件类型：站点统计组件
 			type: "stats",
 			// 是否启用该组件
-			enable: false,
+			enable: true,
 			// 是否在文章详情页显示
 			showOnPostPage: true,
 		},
@@ -321,50 +279,16 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 组件类型：站点信息组件
 			type: "siteInfo",
 			// 是否启用该组件
-			enable: false,
+			enable: true,
 			// 是否在文章详情页显示
 			showOnPostPage: true,
-		},
-		{
-			// 组件类型：音乐播放器
-			type: "music",
-			// 是否启用该组件
-			enable: false,
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-		},
-		{
-			// 组件类型：时间进度组件
-			type: "schedule",
-			// 是否启用该组件
-			enable: false,
-			// 是否在文章详情页显示
-			showOnPostPage: false,
-		},
-		{
-			// 组件类型：恋爱计时小组件
-			type: "relationship",
-			// 是否启用该组件
-			enable: false,
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-		},
-		{
-			// 组件类型：今日一言
-			type: "quoteOfTheDay",
-			// 是否启用该组件
-			enable: false,
-			// 是否在文章详情页显示
-			showOnPostPage: true,
-		},
-		{
-			// 组件类型：天气组件
-			type: "weather",
-			// 是否启用该组件
-			enable: false,
-			// 组件位置
-			// 是否在文章详情页显示
-			showOnPostPage: true,
+			// 组件专属配置
+			specificConfig: {
+				siteInfo: {
+					// 未能识别的构建平台回退显示文本，可自定义
+					unknownBuildPlatform: "Unknown CI",
+				},
+			},
 		},
 	],
 };

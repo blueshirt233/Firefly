@@ -42,7 +42,7 @@ enum I18nKey {
 	postCount = "postCount",
 	postsCount = "postsCount",
 	tagsCount = "tagsCount",
-	// noData = "noData",
+	noData = "noData",
 
 	// Music Widget
 	musicNoPlaying = "musicNoPlaying",
@@ -73,7 +73,6 @@ enum I18nKey {
 	more = "more",
 	collapse = "collapse",
 	all = "all",
-	friendsFilterAll = "friendsFilterAll",
 
 	author = "author",
 	publishedAt = "publishedAt",
@@ -87,9 +86,7 @@ enum I18nKey {
 	guestbook = "guestbook",
 	guestbookDescription = "guestbookDescription",
 	bangumi = "bangumi",
-	moments = "moments",
 
-	// 番组计划筛选和状态文本
 	bangumiTitle = "bangumiTitle",
 	bangumiSubtitle = "bangumiSubtitle",
 	bangumiFilterAll = "bangumiFilterAll",
@@ -135,23 +132,56 @@ enum I18nKey {
 	bangumiTotalPages = "bangumiTotalPages",
 	bangumiPage = "bangumiPage",
 
-	// 番组错误
 	bangumiFetchError = "bangumiFetchError",
 	bangumiFetchErrorDesc = "bangumiFetchErrorDesc",
 
-	// 番组分类
 	bangumiCategoryBook = "bangumiCategoryBook",
 	bangumiCategoryAnime = "bangumiCategoryAnime",
 	bangumiCategoryMusic = "bangumiCategoryMusic",
 	bangumiCategoryGame = "bangumiCategoryGame",
 	bangumiCategoryReal = "bangumiCategoryReal",
 
-	// 番组数据更新
 	bangumiLastUpdated = "bangumiLastUpdated",
 	bangumiUpdatedAt = "bangumiUpdatedAt",
 	bangumiDataStatic = "bangumiDataStatic",
 
-	// 分页
+	anime = "anime",
+	animeSubtitle = "animeSubtitle",
+	animeTotal = "animeTotal",
+	animeAverageRating = "animeAverageRating",
+	animeSearch = "animeSearch",
+	animeAllTypes = "animeAllTypes",
+	animeTV = "animeTV",
+	animeMovie = "animeMovie",
+	animeRatingDesc = "animeRatingDesc",
+	animeRatingAsc = "animeRatingAsc",
+	animeDateDesc = "animeDateDesc",
+	animeDateAsc = "animeDateAsc",
+	animeNoResults = "animeNoResults",
+	animeLastUpdated = "animeLastUpdated",
+	animeSource = "animeSource",
+	animeEpStatus = "animeEpStatus",
+	animeViewDetails = "animeViewDetails",
+	animeNotConfigured = "animeNotConfigured",
+	animeNotConfiguredDesc = "animeNotConfiguredDesc",
+	animeBilibiliAvg = "animeBilibiliAvg",
+	animeTmdbAvg = "animeTmdbAvg",
+	animeDualSynced = "animeDualSynced",
+	animeNoOverview = "animeNoOverview",
+	animeClose = "animeClose",
+	animeSynopsis = "animeSynopsis",
+	animeWatchNow = "animeWatchNow",
+	animeViewTmdb = "animeViewTmdb",
+	animeAllWithCount = "animeAllWithCount",
+	animeTVWithCount = "animeTVWithCount",
+	animeMovieWithCount = "animeMovieWithCount",
+	animeTypeAnime = "animeTypeAnime",
+	animeTypeMovie = "animeTypeMovie",
+	animeTypeDocumentary = "animeTypeDocumentary",
+	animeTypeChinese = "animeTypeChinese",
+	animeTypeDrama = "animeTypeDrama",
+	animeTypeConcert = "animeTypeConcert",
+
 	paginationFirst = "paginationFirst",
 	paginationPrev = "paginationPrev",
 	paginationNext = "paginationNext",
@@ -161,13 +191,11 @@ enum I18nKey {
 	paginationTotal = "paginationTotal",
 	paginationRecords = "paginationRecords",
 
-	// 404页面
 	notFound = "notFound",
 	notFoundTitle = "notFoundTitle",
 	notFoundDescription = "notFoundDescription",
 	backToHome = "backToHome",
 
-	// RSS页面
 	rss = "rss",
 	rssDescription = "rssDescription",
 	rssSubtitle = "rssSubtitle",
@@ -185,7 +213,6 @@ enum I18nKey {
 	rssCopied = "rssCopied",
 	rssCopyFailed = "rssCopyFailed",
 
-	//最后编辑时间卡片
 	lastModifiedPrefix = "lastModifiedPrefix",
 	lastModifiedOutdated = "lastModifiedOutdated",
 	lastModifiedDaysAgo = "lastModifiedDaysAgo",
@@ -196,15 +223,12 @@ enum I18nKey {
 	minute = "minute",
 	second = "second",
 
-	// 访问量统计
 	pageViews = "pageViews",
 	pageViewsLoading = "pageViewsLoading",
 	pageViewsError = "pageViewsError",
 
-	// 置顶
 	pinned = "pinned",
 
-	// 相关文章推荐
 	relatedPosts = "relatedPosts",
 	randomPosts = "randomPosts",
 	smartRecommend = "smartRecommend",
@@ -212,17 +236,14 @@ enum I18nKey {
 	noRelatedPosts = "noRelatedPosts",
 	noRandomPosts = "noRandomPosts",
 
-	// 加密
 	postEncrypted = "postEncrypted",
 
-	// 壁纸模式
 	wallpaperMode = "wallpaperMode",
 	wallpaperBannerMode = "wallpaperBannerMode",
 	wallpaperFullscreenMode = "wallpaperFullscreenMode",
 	wallpaperOverlayMode = "wallpaperOverlayMode",
 	wallpaperNoneMode = "wallpaperNoneMode",
 
-	// 壁纸设置
 	wallpaperSettings = "wallpaperSettings",
 	wallpaperTitle = "wallpaperTitle",
 	wallpaperCarousel = "wallpaperCarousel",
@@ -235,13 +256,10 @@ enum I18nKey {
 	overlayBlur = "overlayBlur",
 	overlayCardOpacity = "overlayCardOpacity",
 
-	// 文章布局
 	postListLayout = "postListLayout",
 	postListLayoutList = "postListLayoutList",
 	postListLayoutGrid = "postListLayoutGrid",
-	postCoverImage = "postCoverImage",
 
-	// 打赏页面
 	sponsor = "sponsor",
 	sponsorTitle = "sponsorTitle",
 	sponsorDescription = "sponsorDescription",
@@ -260,11 +278,11 @@ enum I18nKey {
 	shareOnSocial = "shareOnSocial",
 	shareOnSocialDescription = "shareOnSocialDescription",
 
-	// 站点统计
 	siteStats = "siteStats",
 	siteStatsPostCount = "siteStatsPostCount",
 	siteStatsCategoryCount = "siteStatsCategoryCount",
 	siteStatsTagCount = "siteStatsTagCount",
+	siteStatsShuoshuoCount = "siteStatsShuoshuoCount",
 	siteStatsTotalWords = "siteStatsTotalWords",
 	siteStatsRunningDays = "siteStatsRunningDays",
 	siteStatsLastUpdate = "siteStatsLastUpdate",
@@ -272,7 +290,6 @@ enum I18nKey {
 	siteStatsDays = "siteStatsDays",
 	today = "today",
 
-	// 站点信息
 	siteInfo = "siteInfo",
 	siteInfoBuildTime = "siteInfoBuildTime",
 	siteInfoBuildPlatform = "siteInfoBuildPlatform",
@@ -286,7 +303,6 @@ enum I18nKey {
 	siteInfoDomain = "siteInfoDomain",
 	siteInfoLicense = "siteInfoLicense",
 
-	// 日历组件
 	calendarSunday = "calendarSunday",
 	calendarMonday = "calendarMonday",
 	calendarTuesday = "calendarTuesday",
@@ -317,13 +333,11 @@ enum I18nKey {
 	savePoster = "savePoster",
 	scanToRead = "scanToRead",
 
-	// 代码块折叠配置
 	codeCollapsibleShowMore = "codeCollapsibleShowMore",
 	codeCollapsibleShowLess = "codeCollapsibleShowLess",
 	codeCollapsibleExpanded = "codeCollapsibleExpanded",
 	codeCollapsibleCollapsed = "codeCollapsibleCollapsed",
 
-	// 相册页面
 	gallery = "gallery",
 	galleryDescription = "galleryDescription",
 	galleryPhotos = "galleryPhotos",
@@ -331,104 +345,7 @@ enum I18nKey {
 	galleryNoAlbums = "galleryNoAlbums",
 	galleryBackToAlbums = "galleryBackToAlbums",
 	searchAlbums = "searchAlbums",
-	albumsFilterAll = "albumsFilterAll",
 
-	albumsPhotoCount = "albumsPhotoCount",
-	albumsPhotosCount = "albumsPhotosCount",
-	albumsNoResults = "albumsNoResults",
-
-	// 日记页面
-	diary = "diary",
-	diarySubtitle = "diarySubtitle",
-	diaryCount = "diaryCount",
-	diaryMinutesAgo = "diaryMinutesAgo",
-	diaryHoursAgo = "diaryHoursAgo",
-	diaryDaysAgo = "diaryDaysAgo",
-	diaryNoResults = "diaryNoResults",
-	diaryTips = "diaryTips",
-
-	// 设备页面
-	devices = "devices",
-	devicesSubtitle = "devicesSubtitle",
-	devicesViewDetails = "devicesViewDetails",
-
-	// 项目展示页面
-	projects = "projects",
-	projectsSubtitle = "projectsSubtitle",
-	projectsAll = "projectsAll",
-	projectsWeb = "projectsWeb",
-	projectsMobile = "projectsMobile",
-	projectsDesktop = "projectsDesktop",
-	projectsOther = "projectsOther",
-	projectTechStack = "projectTechStack",
-	projectLiveDemo = "projectLiveDemo",
-	projectSourceCode = "projectSourceCode",
-	projectDescription = "projectDescription",
-	projectStatus = "projectStatus",
-	projectStatusCompleted = "projectStatusCompleted",
-	projectStatusInProgress = "projectStatusInProgress",
-	projectStatusPlanned = "projectStatusPlanned",
-	projectsTotal = "projectsTotal",
-	projectsCompleted = "projectsCompleted",
-	projectsInProgress = "projectsInProgress",
-	projectsTechStack = "projectsTechStack",
-	projectsFeatured = "projectsFeatured",
-	projectsPlanned = "projectsPlanned",
-	projectsDemo = "projectsDemo",
-	projectsSource = "projectsSource",
-	projectsVisit = "projectsVisit",
-	projectsGitHub = "projectsGitHub",
-
-	// 时间线页面
-	timeline = "timeline",
-	timelineSubtitle = "timelineSubtitle",
-	timelineEducation = "timelineEducation",
-	timelineWork = "timelineWork",
-	timelineProject = "timelineProject",
-	timelineAchievement = "timelineAchievement",
-	timelinePresent = "timelinePresent",
-	timelineLocation = "timelineLocation",
-	timelineDescription = "timelineDescription",
-	timelineMonths = "timelineMonths",
-	timelineYears = "timelineYears",
-	timelineTotal = "timelineTotal",
-	timelineProjects = "timelineProjects",
-	timelineExperience = "timelineExperience",
-	timelineCurrent = "timelineCurrent",
-	timelineHistory = "timelineHistory",
-	timelineAchievements = "timelineAchievements",
-	timelineStartDate = "timelineStartDate",
-	timelineDuration = "timelineDuration",
-
-	// 技能页面
-	skills = "skills",
-	skillsSubtitle = "skillsSubtitle",
-	skillsFrontend = "skillsFrontend",
-	skillsBackend = "skillsBackend",
-	skillsDatabase = "skillsDatabase",
-	skillsTools = "skillsTools",
-	skillsOther = "skillsOther",
-	skillLevel = "skillLevel",
-	skillLevelBeginner = "skillLevelBeginner",
-	skillLevelIntermediate = "skillLevelIntermediate",
-	skillLevelAdvanced = "skillLevelAdvanced",
-	skillLevelExpert = "skillLevelExpert",
-	skillExperience = "skillExperience",
-	skillYears = "skillYears",
-	skillMonths = "skillMonths",
-	skillsTotal = "skillsTotal",
-	skillsExpert = "skillsExpert",
-	skillsAdvanced = "skillsAdvanced",
-	skillsIntermediate = "skillsIntermediate",
-	skillsBeginner = "skillsBeginner",
-	skillsAdvancedTitle = "skillsAdvancedTitle",
-	skillsProjects = "skillsProjects",
-	skillsDistribution = "skillsDistribution",
-	skillsByLevel = "skillsByLevel",
-	skillsByCategory = "skillsByCategory",
-	noData = "noData",
-
-	// 密码保护
 	passwordProtected = "passwordProtected",
 	passwordProtectedDesc = "passwordProtectedDesc",
 	passwordHint = "passwordHint",
@@ -436,6 +353,22 @@ enum I18nKey {
 	passwordSubmit = "passwordSubmit",
 	passwordError = "passwordError",
 	passwordProtectedRss = "passwordProtectedRss",
+
+	videoPlay = "videoPlay",
+	videoPause = "videoPause",
+	videoPrev = "videoPrev",
+	videoNext = "videoNext",
+	videoLoadError = "videoLoadError",
+
+	shuoshuo = "shuoshuo",
+	shuoshuoDescription = "shuoshuoDescription",
+	shuoshuoList = "shuoshuoList",
+	shuoshuoNoContent = "shuoshuoNoContent",
+	shuoshuoHasVideo = "shuoshuoHasVideo",
+	shuoshuoMedia = "shuoshuoMedia",
+	backToList = "backToList",
+	viewShuoShuo = "viewShuoShuo",
+	musicVisualizer = "musicVisualizer",
 }
 
 export default I18nKey;

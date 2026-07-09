@@ -704,7 +704,7 @@ function adjustMainContentPosition(
 		case "banner": {
 			// Banner模式：主内容在banner下方
 			const isHome = checkIsHomePage(window.location.pathname);
-			const bannerTargetTop = "calc(var(--banner-height) - 3rem)";
+			const bannerTargetTop = "calc(var(--banner-height) - 3.5rem)";
 
 			// 禁用 CSS transition，防止整个定位过程中的值变化触发过渡动画
 			mainContent.style.setProperty("transition", "none", "important");
@@ -1185,7 +1185,7 @@ export function getDefaultBannerTitleEnabled(): boolean {
 }
 
 export function getDefaultBannerCarouselEnabled(): boolean {
-	return backgroundWallpaper.banner?.carousel?.enable ?? false;
+	return backgroundWallpaper.common?.carousel?.enable ?? false;
 }
 
 export function getStoredBannerTitleEnabled(): boolean {
@@ -1204,7 +1204,7 @@ export function getStoredBannerTitleEnabled(): boolean {
 
 export function getStoredBannerCarouselEnabled(): boolean {
 	const isSwitchable =
-		backgroundWallpaper.banner?.carousel?.switchable ?? false;
+		backgroundWallpaper.common?.carousel?.switchable ?? false;
 	if (!isSwitchable) {
 		return getDefaultBannerCarouselEnabled();
 	}
@@ -1235,7 +1235,7 @@ export function setBannerTitleEnabled(enabled: boolean): void {
 export function setBannerCarouselEnabled(enabled: boolean): void {
 	const safeEnabled = !!enabled;
 	const isSwitchable =
-		backgroundWallpaper.banner?.carousel?.switchable ?? false;
+		backgroundWallpaper.common?.carousel?.switchable ?? false;
 	if (
 		isSwitchable &&
 		typeof localStorage !== "undefined" &&
@@ -1281,108 +1281,6 @@ export function applyBannerCarouselEnabledToDocument(enabled: boolean): void {
 	}
 	document.documentElement.setAttribute(
 		"data-banner-carousel-enabled",
-		String(enabled),
-	);
-}
-
-// Fullscreen carousel functions
-export function getDefaultFullscreenCarouselEnabled(): boolean {
-	return backgroundWallpaper.fullscreen?.carousel?.enable ?? false;
-}
-
-export function getStoredFullscreenCarouselEnabled(): boolean {
-	const isSwitchable =
-		backgroundWallpaper.fullscreen?.carousel?.switchable ?? false;
-	if (!isSwitchable) {
-		return getDefaultFullscreenCarouselEnabled();
-	}
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
-		return getDefaultFullscreenCarouselEnabled();
-	}
-	const stored = localStorage.getItem("fullscreenCarouselEnabled");
-	if (stored === null) {
-		return getDefaultFullscreenCarouselEnabled();
-	}
-	return stored === "true";
-}
-
-export function setFullscreenCarouselEnabled(enabled: boolean): void {
-	const safeEnabled = !!enabled;
-	const isSwitchable =
-		backgroundWallpaper.fullscreen?.carousel?.switchable ?? false;
-	if (
-		isSwitchable &&
-		typeof localStorage !== "undefined" &&
-		typeof localStorage.setItem === "function"
-	) {
-		localStorage.setItem("fullscreenCarouselEnabled", String(safeEnabled));
-	}
-	applyFullscreenCarouselEnabledToDocument(safeEnabled);
-	if (typeof window !== "undefined") {
-		window.dispatchEvent(
-			new CustomEvent("fullscreenCarouselChange", {
-				detail: { enabled: safeEnabled },
-			}),
-		);
-	}
-}
-
-export function applyFullscreenCarouselEnabledToDocument(enabled: boolean): void {
-	if (typeof document === "undefined") {
-		return;
-	}
-	document.documentElement.setAttribute(
-		"data-fullscreen-carousel-enabled",
-		String(enabled),
-	);
-}
-
-// Post cover image functions
-export function getDefaultPostCoverImageEnabled(): boolean {
-	return siteConfig.postListLayout.showCover ?? true;
-}
-
-export function getStoredPostCoverImageEnabled(): boolean {
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.getItem !== "function"
-	) {
-		return getDefaultPostCoverImageEnabled();
-	}
-	const stored = localStorage.getItem("postCoverImageEnabled");
-	if (stored === null) {
-		return getDefaultPostCoverImageEnabled();
-	}
-	return stored === "true";
-}
-
-export function setPostCoverImageEnabled(enabled: boolean): void {
-	if (
-		typeof localStorage === "undefined" ||
-		typeof localStorage.setItem !== "function"
-	) {
-		return;
-	}
-	localStorage.setItem("postCoverImageEnabled", String(enabled));
-	applyPostCoverImageEnabledToDocument(enabled);
-	if (typeof window !== "undefined") {
-		window.dispatchEvent(
-			new CustomEvent("postCoverImageChange", {
-				detail: { enabled },
-			}),
-		);
-	}
-}
-
-export function applyPostCoverImageEnabledToDocument(enabled: boolean): void {
-	if (typeof document === "undefined") {
-		return;
-	}
-	document.documentElement.setAttribute(
-		"data-post-cover-enabled",
 		String(enabled),
 	);
 }

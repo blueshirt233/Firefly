@@ -47,58 +47,32 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		children: [
 			// 相册
 			LinkPresets.Gallery,
+			LinkPresets.shuoshuo,
+
+			// 追番
+			LinkPresets.Anime,
 
 			// 番组计划
 			LinkPresets.Bangumi,
 
-			// 设备
-			//LinkPresets.Devices,
-
-			// 日记
-			LinkPresets.Diary,
-
-			// 音乐
-			//LinkPresets.Music,
+			// 音乐可视化
+			LinkPresets.MusicVisualizer,
 		],
 	});
 
 	// 关于及其子菜单
 	links.push({
-		name: "更多",
-		url: "/content/",
+		name: "关于",
+		url: "#",
 		icon: "material-symbols:info",
 		children: [
 			// 打赏
-			//LinkPresets.Sponsor,
+			LinkPresets.Sponsor,
 
 			// 关于页面
 			LinkPresets.About,
 		],
 	});
-
-	// 关于及其子菜单
-/*	links.push({
-		name: "其他",
-		url: "/other/",
-		icon: "material-symbols:more-horiz",
-		children: [
-			// 项目
-			LinkPresets.Projects,
-
-			// 时间线
-			LinkPresets.Timeline,
-
-			// 技能
-			LinkPresets.Skills,
-
-			{
-				name: "统计",
-				url: "https://umami.seasir.top/share/cp5SqrNUOxbulLZt/seasir.top",
-				external: true,
-				icon: "fa7-solid:chart-simple",
-			},
-		],
-	});*/
 
 	// 自定义导航栏链接
 	links.push({
@@ -107,70 +81,41 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		icon: "material-symbols:link",
 		// 子菜单
 		children: [
-		/*	{
+			{
 				name: "GitHub",
-				url: "https://github.com/Seasir-Hyde",
+				url: "https://github.com/CuteLeaf/Firefly",
 				external: true,
 				icon: "fa7-brands:github",
 			},
 			{
 				name: "Gitee",
-				url: "https://gitee.com/SeasirHyde",
+				url: "https://gitee.com/CuteLeaf/Firefly",
 				external: true,
 				icon: "fa7-brands:gitee",
 			},
 			{
-				name: "CNB",
-				url: "https://cnb.cool/W3C/Hyde/Firefly-hyde",
+				name: "QQ交流群",
+				url: "https://qm.qq.com/q/ZGsFa8qX2G",
 				external: true,
-				icon: "tdesign:logo-cnb-filled",
+				icon: "fa7-brands:qq",
 			},
 			{
-				name: "个人主页",
-				url: "https://home.seasir.top/",
+				name: "Firefly文档",
+				url: "https://docs-firefly.cuteleaf.cn",
 				external: true,
-				icon: "material-symbols:page-footer-outline",
-			},
-			{
-			 	name: "QQ交流群",
-			 	url: "https://qq.com",
-			 	external: true,
-			 	icon: "fa7-brands:qq",
-			 },*/
-			 {
-				name: "我的图床",
-				url: "https://tu.2644536256.date",
-				external: true,
-				icon: "material-symbols:image",
+				icon: "material-symbols:docs",
 			},
 		],
 	});
 
-	// 自定义导航栏链接示例2：带子菜单（混用预设链接）
+	// 文档链接
 	// links.push({
-	// 	name: "链接",
-	// 	url: "/links/",
-	// 	icon: "material-symbols:link",
-
-	// 	// 子菜单
-	// 	children: [
-	// 		{
-	// 			name: "GitHub",
-	// 			url: "https://github.com/CuteLeaf/Firefly",
-	// 			external: true,
-	// 			icon: "fa7-brands:github",
-	// 		},
-	// 		{
-	// 			name: "Bilibili",
-	// 			url: "https://space.bilibili.com/38932988",
-	// 			external: true,
-	// 			icon: "fa7-brands:bilibili",
-	// 		},
-	// 		LinkPreset.Friends,
-	// 	],
+	// 	name: "文档",
+	// 	url: "https://docs-firefly.cuteleaf.cn",
+	// 	external: true,
+	// 	icon: "material-symbols:docs",
 	// });
 
-	// 仅返回链接，其它导航搜索相关配置在模块顶层常量中独立导出
 	return { links } as NavBarConfig;
 };
 
@@ -202,7 +147,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 	Tags: {
 		name: "标签",
 		url: "/tags/",
-		icon: "material-symbols:label",
+		icon: "material-symbols:tag-rounded",
 	},
 	Friends: {
 		name: "友链",
@@ -239,35 +184,24 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:photo-library",
 		pageKey: "gallery",
 	},
-	Devices: {
-		name: "设备",
-		url: "/devices/",
-		icon: "material-symbols:devices",
+	shuoshuo:	{
+  		name: "说说",
+  		url: "/shuoshuo/",
+  		icon: "material-symbols:chat-bubble-rounded",
+ 		pageKey: "shuoshuo",
 	},
-	Diary: {
-		name: "日记",
-		url: "/diary/",
-		icon: "material-symbols:book",
+
+	Anime: {
+		name: "追番",
+		url: "/anime/",
+		icon: "material-symbols:live-tv",
+		pageKey: "anime",
 	},
-	Projects: {
-		name: "项目",
-		url: "/projects/",
-		icon: "material-symbols:work",
-	},
-	Skills: {
-		name: "技能",
-		url: "/skills/",
-		icon: "material-symbols:psychology",
-	},
-	Timeline: {
-		name: "时间线",
-		url: "/timeline/",
-		icon: "material-symbols:timeline",
-	},
-	Music: {
-		name: "音乐",
-		url: "/music/",
+	MusicVisualizer: {
+		name: "音乐可视化",
+		url: "/music-visualizer/",
 		icon: "material-symbols:music-note-rounded",
+		pageKey: "musicVisualizer",
 	},
 };
 

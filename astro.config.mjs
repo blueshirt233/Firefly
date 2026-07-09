@@ -24,9 +24,11 @@ import remarkAdmonitionToBlockquoteCallout from "remark-admonition-to-blockquote
 import remarkDirective from "remark-directive"; /* Handle directives */
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
-import { expressiveCodeConfig, plantumlConfig, siteConfig } from "./src/config";
+import { expressiveCodeConfig, fontConfig, fontsList, plantumlConfig, siteConfig } from "./src/config";
+import { collectUsedFontCssVars } from "./src/utils/fontHelper";
 import I18nKey from "./src/i18n/i18nKey";
 import { i18n } from "./src/i18n/translation";
+import { fontProviders } from "astro/config";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import rehypeEmailProtection from "./src/plugins/rehype-email-protection.mjs";
 import rehypeExternalLinks from "./src/plugins/rehype-external-links.mjs";
@@ -57,23 +59,35 @@ export default defineConfig({
 	base: "/",
 	trailingSlash: "always",
 
+	// 字体配置 - 只加载实际使用的字体，跳过未引用的以加快构建
+	fonts: (() => {
+		// 禁用字体功能时直接返回空数组，跳过 Astro Font API 集成
+		if (!fontConfig.enable) return [];
+
+		const used = collectUsedFontCssVars(fontConfig);
+		return fontsList
+			.filter((f) => used.has(f.cssVariable))
+			.map((f) => {
+				let provider;
+				switch (f.provider) {
+					case "google": provider = fontProviders.google(); break;
+					case "fontsource": provider = fontProviders.fontsource(); break;
+					case "local": provider = fontProviders.local(); break;
+					case "bunny": provider = fontProviders.bunny(); break;
+					case "fontshare": provider = fontProviders.fontshare(); break;
+					case "npm": provider = fontProviders.npm(); break;
+					default: provider = f.provider;
+				}
+				return { ...f, provider };
+			});
+	})(),
+
 	adapter,
 
 	// 图像优化配置
 	image: {
 		// 全局响应式布局
 		layout: "constrained",
-		// 启用 AVIF 和 WebP 格式支持
-		formats: ["avif", "webp"],
-		// 设置合理的图像质量
-		quality: 80,
-	},
-
-	experimental: {
-		// Rust 编译器以提升构建性能（实验性），部分平台可能会导致构建失败
-		rustCompiler: false,
-		// 队列渲染以优化性能（实验性）
-		queuedRendering: { enabled: true },
 	},
 
 	integrations: [
@@ -158,7 +172,7 @@ export default defineConfig({
 				borderRadius: "0.75rem",
 				codeFontSize: "0.875rem",
 				codeFontFamily:
-					"'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+					"var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
 				codeLineHeight: "1.5rem",
 				frames: {},
 				textMarkers: {
@@ -199,6 +213,12 @@ export default defineConfig({
 					return false;
 				}
 				if (pathname === "/gallery/" && !siteConfig.pages.gallery) {
+					return false;
+				}
+				if (pathname === "/anime/" && !siteConfig.pages.anime) {
+					return false;
+				}
+				if (pathname === "/shuoshuo/" && !siteConfig.pages.shuoshuo) {
 					return false;
 				}
 
@@ -289,7 +309,7 @@ export default defineConfig({
 			},
 			rollupOptions: {
 				onwarn(warning, warn) {
-					// 暂时抑制动态导入警告
+					// temporarily suppress this warning
 					if (
 						warning.message.includes("is dynamically imported by") &&
 						warning.message.includes("but also statically imported by")
@@ -302,18 +322,7 @@ export default defineConfig({
 			// CSS 优化
 			cssCodeSplit: true,
 			cssMinify: "esbuild",
-			// 将小于 4KB 的资源内联到 HTML 中
 			assetsInlineLimit: 4096,
-			// 生成 sourcemap（生产环境禁用以减小体积）
-			sourcemap: false,
-			// 提高 chunk 大小警告阈值到 600KB
-			chunkSizeWarningLimit: 1500,
-		},
-		// 性能优化配置
-		optimizeDeps: {
-			// 强制预构建依赖
-			include: ["@fancyapps/ui", "katex", "marked"],
 		},
 	},
 });
-
