@@ -1,4 +1,4 @@
-﻿// 配置索引文件 - 统一导出所有配置
+// 配置索引文件 - 统一导出所有配置
 // 这样组件可以一次性导入多个相关配置，减少重复的导入语句
 
 // 类型导出
@@ -28,13 +28,6 @@ export type {
 	WidgetComponentType,
 	WidgetSpecificConfig,
 } from "../types/config";
-export type {
-	BuiltinFontProvider,
-	CustomFontProvider,
-	FontDefinition,
-	FontSelectionConfig,
-} from "../types/fontConfig"; // 字体类型定义
-export type { ShuoShuoConfig, ShuoShuoVideo } from "../types/shuoshuoConfig"; // 说说类型定义
 export { analyticsConfig } from "./analyticsConfig"; // 统计分析配置
 export { announcementConfig } from "./announcementConfig"; // 公告配置
 // 样式配置
@@ -44,7 +37,7 @@ export { commentConfig } from "./commentConfig"; // 评论系统配置
 export { coverImageConfig } from "./coverImageConfig"; // 封面图配置
 export { sakuraConfig } from "./effectsConfig"; // 动画特效配置（樱花等）
 export { expressiveCodeConfig } from "./expressiveCodeConfig"; // 代码高亮配置
-export { fontConfig, fontsList } from "./fontConfig"; // 字体配置
+export { fontConfig } from "./fontConfig"; // 字体配置
 export { footerConfig } from "./footerConfig"; // 页脚配置
 export { friendsPageConfig, getEnabledFriends } from "./friendsConfig"; // 友链配置
 export { galleryConfig } from "./galleryConfig"; // 相册配置
@@ -55,9 +48,9 @@ export { navBarConfig, navBarSearchConfig } from "./navBarConfig"; // 导航栏�
 export { live2dWidgetConfig, spineModelConfig } from "./pioConfig"; // 看板娘配置
 export { plantumlConfig } from "./plantumlConfig"; // PlantUML 图表配置
 export { profileConfig } from "./profileConfig"; // 用户资料配置
+export { relationshipConfig } from "./relationshipConfig"; // 恋爱计时配置
 // 布局配置
 export { sidebarLayoutConfig } from "./sidebarConfig"; // 侧边栏布局配置
 // 核心配置
-export { shuoshuoConfig } from "./shuoshuoConfig"; // 说说配置
 export { siteConfig } from "./siteConfig"; // 站点基础配置
 export { sponsorConfig } from "./sponsorConfig"; // 打赏配置

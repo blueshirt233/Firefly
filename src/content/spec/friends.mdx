@@ -8,11 +8,11 @@ description: "与优秀的朋友们一起成长"
 {/* ========== 站点信息 ========= */}
 
 export const site = {
-  name: "夏夜流萤",
-  desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
-  url: "https://blog.cuteleaf.cn",
-  avatar: "https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-  email: "xiaye@msn.com",
+  name: "好想喝点奶绿",
+  desc: "海浪会来，生活总会继续",
+  url: "https://https://blog.2644536256.date/",
+  avatar: "https://tu.2644536256.date/file/奶绿/1778986178008_logo.png",
+  email: "2644536256@qq.com",
 };
 
 {/* ========= 注意事项 ========== */}
@@ -53,6 +53,15 @@ export const notes = [
 
         {/* 站点信息列表（可复制） */}
         <div class="space-y-2.5 flex-1">
+          {/* 一键复制所有信息按钮 */}
+          <button 
+            onclick={`navigator.clipboard.writeText('站点名称：${site.name.replace(/'/g, "\\'")}\\n站点描述：${site.desc.replace(/'/g, "\\'")}\\n站点链接：${site.url.replace(/'/g, "\\'")}\\n头像链接：${site.avatar.replace(/'/g, "\\'")}');this.querySelectorAll('svg')[0].classList.add('hidden');this.querySelectorAll('svg')[1].classList.remove('hidden');setTimeout(()=>{this.querySelectorAll('svg')[0].classList.remove('hidden');this.querySelectorAll('svg')[1].classList.add('hidden')},1500)`} 
+            class="w-full flex items-center justify-center gap-2 rounded-lg bg-(--primary) text-white px-4 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer mb-3"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>一键复制所有信息</span>
+          </button>
           {[
             { label: "站点名称", value: site.name },
             { label: "站点描述", value: site.desc },

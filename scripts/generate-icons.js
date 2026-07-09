@@ -203,7 +203,7 @@ async function main() {
 	console.log("🔍 扫描源文件中的图标使用...\n");
 
 	// 获取所有源文件
-	const files = getAllFiles(SRC_DIR);
+	const files = getAllFiles(SRC_DIR, [".svelte", ".astro"]);
 	console.log(`📁 找到 ${files.length} 个源文件\n`);
 
 	// 收集所有使用的图标

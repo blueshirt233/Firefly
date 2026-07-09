@@ -19,6 +19,11 @@
   h4,
   h5,
   h6 {
+    /* Keep native hash-anchor navigation visible under fixed navbar */
+    body.sticky-navbar & {
+      scroll-margin-top: 5.5rem;
+    }
+
     .anchor {
       @apply transition! -m-0.5! ml-[0.2ch]! p-0.5! select-none! opacity-0! no-underline!;
 
@@ -53,7 +58,7 @@
     @apply bg-(--inline-code-bg) text-(--inline-code-color) px-1 py-0.5 rounded-md overflow-hidden;
 
     font-family:
-      var(--font-jetbrains-mono),
+      "JetBrains Mono Variable",
       ui-monospace,
       SFMono-Regular,
       Menlo,

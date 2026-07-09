@@ -3,13 +3,14 @@ import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 const postsCollection = defineCollection({
-	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
 	schema: z.object({
 		title: z.string(),
 		published: z.date(),
 		updated: z.date().optional(),
 		draft: z.boolean().optional().default(false),
 		description: z.string().optional().default(""),
+		descriptionSource: z.string().optional().default(""),
 		image: z.string().optional().default(""),
 		tags: z.array(z.string()).optional().default([]),
 		category: z.string().optional().nullable().default(""),
@@ -36,35 +37,41 @@ const specCollection = defineCollection({
 	schema: z.object({}),
 });
 
-// ============================================================================
-// ShuoShuo Collection - For quick posts & moments (photos, videos, tags)
-// To create a new entry: add a .md file in src/content/shuoshuo/
-// See: .hermes/docs/shuoshuo-guide.md for full instructions
-// ============================================================================
-const shuoshuoCollection = defineCollection({
-	loader: glob({ pattern: "**/*.md", base: "./src/content/shuoshuo" }),
-	schema: z.object({
-		published: z.date(),
-		updated: z.date().optional(),
-		images: z.array(z.string()).optional().default([]),
-		videos: z.array(z.object({
-			type: z.enum(["bilibili", "youtube", "direct"]),
-			bvid: z.string().optional(),
-			youtubeId: z.string().optional(),
-			src: z.string().optional(),
-			title: z.string().optional(),
-		})).optional().default([]),
-		tags: z.array(z.string()).optional().default([]),
-		draft: z.boolean().optional().default(false),
-		pinned: z.boolean().optional().default(false),
-		comment: z.boolean().optional().default(true),
-		password: z.string().optional().default(""),
-		passwordHint: z.string().optional().default(""),
-	}),
+const ziyuanCollection = defineCollection({
+	loader: glob({ pattern: "**/*.md", base: "./src/content/ziyuan" }),
+	schema: z.union([
+		z.object({
+			title: z.string(),
+			content: z.string(),
+			closable: z.boolean().optional().default(true),
+			link: z
+				.object({
+					enable: z.boolean().optional().default(true),
+					text: z.string(),
+					url: z.string(),
+					external: z.boolean().optional().default(false),
+				})
+				.optional(),
+			quotes: z.undefined().optional(),
+		}),
+		z.object({
+			title: z.string(),
+			quotes: z.array(
+				z.object({
+					text: z.string(),
+					author: z.string(),
+				})
+			),
+			content: z.undefined().optional(),
+			closable: z.undefined().optional(),
+			link: z.undefined().optional(),
+		}),
+	]),
 });
 
 export const collections = {
 	posts: postsCollection,
 	spec: specCollection,
-	shuoshuo: shuoshuoCollection,
+	ziyuan: ziyuanCollection,
+
 };

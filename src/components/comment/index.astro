@@ -11,34 +11,34 @@ import Twikoo from "./Twikoo.astro";
 import Waline from "./Waline.astro";
 
 interface Props {
-	post?: CollectionEntry<"posts"> | CollectionEntry<"spec"> | CollectionEntry<"shuoshuo">;
+	post?: CollectionEntry<"posts"> | CollectionEntry<"spec">;
 	customPath?: string;
 	title?: string;
 }
 
 const { post, customPath, title: customTitle } = Astro.props as Props;
 
-// 鏍规嵁椤甸潰绫诲瀷纭畾璺緞
+// 根据页面类型确定路径
 const slugFromPath = (customPath || "/").replace(/^\/+|\/+$/g, "") || "index";
 const slug = post ? removeFileExtension(post.id) : slugFromPath;
 const path = customPath
 	? customPath
 	: post
 		? post.collection === "posts"
-			? `/posts/${slug}`
+			? `/blog/${slug}`
 			: `/${slug}`
 		: `/${slug}`;
 const url = `${Astro.site?.href}${path}`;
 const postTitle = post && "title" in post.data ? post.data.title : undefined;
 
-// 寮哄埗commentService绫诲瀷涓簊tring锛岄伩鍏嶇被鍨嬩笉鍏煎璀﹀憡
+// 强制commentService类型为string，避免类型不兼容警告
 let commentService: string = commentConfig?.type || "none";
 ---
 
 {
   commentService !== "none" && (
     <div id="post-comments" class="card-base p-8 mb-6 relative overflow-hidden">
-      <!-- 璇勮鍖鸿楗版€ц儗鏅?-->
+      <!-- 评论区装饰性背景 -->
       <div class="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
         <svg viewBox="0 0 100 100" class="w-full h-full">
           <circle cx="50" cy="50" r="40" fill="currentColor" class="text-(--primary)" />
@@ -46,7 +46,7 @@ let commentService: string = commentConfig?.type || "none";
           <circle cx="50" cy="50" r="10" fill="currentColor" class="text-(--primary)" />
         </svg>
       </div>
-      <!-- 璇勮鍖烘爣棰?-->
+      <!-- 评论区标题 -->
       <div class="relative z-10 mb-6">
         <div class="flex items-center gap-3 mb-2">
           <div class="w-1 h-6 bg-linear-to-b from-(--primary) to-transparent rounded-full"></div>
@@ -54,7 +54,7 @@ let commentService: string = commentConfig?.type || "none";
         </div>
         <p class="text-sm text-(--content-meta) ml-4">{i18n(Key.commentSubtitle)}</p>
       </div>
-      <!-- 璇勮鍐呭鍖哄煙 -->
+      <!-- 评论内容区域 -->
       <div class="relative z-10 pl-2 pr-2">
         {commentService === "twikoo" && <Twikoo path={path} />}
         {commentService === "waline" && <Waline path={path} />}

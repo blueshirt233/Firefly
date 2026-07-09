@@ -2,10 +2,10 @@ import type { AnnouncementConfig } from "../types/announcementConfig";
 
 export const announcementConfig: AnnouncementConfig = {
 	// 公告标题
-	title: "公告",
+	title: "📢 欢迎来访者",
 
 	// 公告内容
-	content: "欢迎来到我的博客！这是一则示例公告。",
+	content: "👋🏻 Hi，我是好想喝点奶绿，欢迎您！本站点将继续施工！",
 
 	// 是否允许用户关闭公告
 	closable: true,
